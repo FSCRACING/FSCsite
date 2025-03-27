@@ -1,0 +1,701 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stile generale del body */
+body {
+    margin: 0;
+    padding: 20px 0 0;
+    color: #fffdfd;
+    line-height: 1.6;
+    font-size: 18px;
+    overflow-x: hidden;
+    background-color: #000; /* Colore di fallback */
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    background: url('../images/sfondo.jpg') no-repeat center center;
+    background-size: contain; /* Mostra interamente l'immagine senza ritagli */
+    z-index: -1; /* Sposta lo sfondo sotto gli altri contenuti */
+}
+/* Quando lo sfondo scompare */
+body.scrolled {
+    background-color: black; /* Sostituisce l'immagine con un colore */
+    background-image: none; /* Rimuove l'immagine */
+}
+
+.loading-logo-desktoponly {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.loading-logo-mobileonly {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+    .loading-logo-desktoponly{
+        display: block;
+    }
+    .loading-logo-mobileonly
+    {
+        display: none;
+    }
+}
+@media (max-width: 768px) 
+{
+    .loading-logo-desktoponly{
+        display: none;
+    }
+    .loading-logo-mobileonly
+    {
+        display: block;
+    }
+}
+
+/* Sezione Hero */
+.hero {
+    display: flex;
+    flex-direction: row; /* Disposizione orizzontale */
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh; /* Occupa l'intero schermo */
+    padding: 0;
+    background: url("../images/sfondi/management.jpg");
+    background-size: cover;
+
+    color: #fff;
+}
+
+/* Parte sinistra: Titolo */
+.hero-left {
+    flex: 1; /* Occupa metà dello spazio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-left .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #e7e7e7;
+}
+
+/* Parte destra: Descrizione */
+.hero-right {
+    flex: 1; /* Occupa metà dello spazio */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    text-align: left; /* Testo allineato a sinistra */
+}
+
+.hero-right .hero-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+/* Linea di separazione */
+.hero-divider {
+    width: 2px; /* Larghezza della linea */
+    background: linear-gradient(to bottom, red, black, rgb(0, 4, 255));
+    height: 70%; /* Altezza relativa al contenitore */
+    align-self: center; /* Centra la linea verticalmente */
+    margin: 0 20px; /* Spazio orizzontale tra titolo e descrizione */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Disposizione verticale su schermi piccoli */
+    }
+    .hero-divider {
+        width: 70%; /* Linea orizzontale su mobile */
+        height: 2px; /* Riduce lo spessore */
+        margin: 20px 0; /* Spazio verticale */
+    }
+
+
+    .hero-left,
+    .hero-right {
+        flex: none; /* Disabilita la divisione dello spazio */
+        width: 100%; /* Colonne a tutta larghezza */
+        padding: 20px;
+    }
+
+    .hero-left .hero-title {
+        font-size: 2rem; /* Riduce la dimensione del titolo */
+    }
+
+    .hero-right .hero-description {
+        font-size: 0.9rem; /* Riduce la dimensione del testo */
+    }
+}
+
+/* Sezione Team */
+.team-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    background: url(../images/tarmac.jpg);
+    background-size: cover;
+    color: #fff;
+    gap: 40px;
+    overflow: hidden;
+}
+
+/* Parte sinistra: Responsabile */
+.team-left {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.responsible-highlight {
+    background: rgba(49, 49, 49, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.responsible-highlight:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.team-image {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.team-responsible {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.team-role {
+    font-size: 1rem;
+    color: #bbb;
+}
+
+/* Parte destra: Partecipanti */
+.team-right {
+    flex: 2;
+    text-align: center;
+}
+
+.team-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Cards */
+.participant-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    position: relative;
+    background: rgba(56, 56, 56, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Nome del partecipante */
+.participant-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+
+/* Ruolo del partecipante (nascosto di default) */
+.participant-role {
+    font-size: 1rem;
+    color: #bbb;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Ruolo visibile in hover */
+.card:hover .participant-role {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-section {
+        flex-direction: column; /* Disposizione verticale su schermi piccoli */
+        gap: 20px; /* Spazio tra le sezioni */
+    }
+
+    .team-left,
+    .team-right {
+        flex: none; /* Rimuove la divisione dello spazio */
+        width: 100%; /* Allarga i contenitori */
+        text-align: center; /* Assicura il testo centrato */
+    }
+
+    .team-table {
+        font-size: 0.9rem; /* Riduce la dimensione della tabella su mobile */
+    }
+}
+
+
+/* Contenitore fisso */
+.container {
+    position: sticky; /* Rende il contenitore fisso */
+    top: 0; /* Si blocca al bordo superiore del viewport */
+    width: 100%;
+    height: 100%; /* Occupa l'intera sezione */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Titolo e contenuto */
+.title {
+    font-size: 3rem;
+    margin: 0;
+    opacity: 0; /* Inizialmente invisibile */
+    transform: translateY(-50px); /* Spostato verso l'alto */
+    transition: opacity 1s ease, transform 1s ease; /* Transizione fluida */
+}
+
+.content {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    opacity: 0; /* Inizialmente invisibile */
+    transform: translateY(50px); /* Spostato verso il basso */
+    transition: opacity 1s ease, transform 1s ease; /* Transizione fluida */
+}
+
+
+/* Animazione attiva */
+.container.active .title,
+.container.active .content {
+    opacity: 1; /* Diventa visibile */
+    transform: translateY(0); /* Torna alla posizione originale */
+}
+
+#electric-section {
+    background: url('../images/sfondi/elettrica.jpg') no-repeat center center; /* Sostituisci con il percorso dell'immagine */
+    background-size: cover; /* Adatta l'immagine per coprire l'intero sfondo */
+    color: #fff; /* Colore del testo sopra lo sfondo */
+    padding: 60px 20px; /* Spaziatura interna */
+    position: relative;
+    overflow: hidden;
+}
+/* Sezione con sfondo trasparente */
+#Navigazione {
+    position: relative;
+    height: 100vh; /* Occupa tutto il viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.5); /* Sfondo trasparente predefinito */
+    transition: background 0.3s ease; /* Transizione per cambio sfondo */
+    backdrop-filter: blur(5px); /* Aggiunge sfocatura */
+}
+
+/* Cambia il colore dinamicamente */
+#Navigazione[data-bg-color] {
+    background: var(--bg-color, rgba(0, 0, 0, 0.5)); /* Cambia con il colore dinamico */
+}
+.fullscreen-section {
+    height: 100%; /* Ogni sezione copre l'intero schermo */
+    width: 100%;
+    padding: 40px 20px;
+    background-color: #f4f4f4; /* Sfondo uniforme per nascondere il precedente */
+    color: #333; /* Testo scuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.separatore {
+    width: 100%;
+    height: 10px; /* Altezza del separatore */
+    background: linear-gradient(to bottom, #131316, #18171c); /* Sfumatura dall'alto verso il basso */
+    margin: 0px 0; /* Margine sopra e sotto il separatore */
+    border: none; /* Rimuove eventuali bordi */
+}
+
+/* Barra menu generale */
+/* Barra menu generale */
+/* Barra menu generale */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Altezza maggiore in cima alla pagina */
+    background: linear-gradient(to right, #c90d09,black, #102e56);
+    /*background-color: transparent;  Sfondo nero semi-trasparente */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    transition: all 0.3s ease; /* Transizione fluida per tutti i cambiamenti */
+}
+
+.navbar.scrolled {
+    height: 50px; /* Altezza ridotta */
+    background: linear-gradient(to right, #c90d09,black, #102e56);
+    border-radius: 20px; /* Bordi arrotondati */
+    width: calc(100% - 40px); /* Larghezza ridotta per margini */
+    margin-top: 20px; /* Spazio sopra la navbar durante lo scroll */
+    margin-left: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+/* Logo */
+.navbar-logo {
+    height: 70px; /* Altezza maggiore in cima */
+    transition: height 0.3s ease; /* Transizione fluida */
+}
+
+.navbar.scrolled .navbar-logo {
+    height: 50px; /* Altezza ridotta del logo */
+}
+
+
+/* Contenitore logo e menu */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Allinea il contenuto all'intera larghezza */
+}
+
+
+/* Menu */
+.navbar-menu ul {
+    list-style: none;
+    display: flex; /* Dispone le voci in riga */
+    gap: 30px; /* Spazio tra le voci */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; /* Testo bianco */
+    transition: color 0.3s ease;
+}
+
+.navbar-menu ul li a:hover {
+    color: #00bcd4; /* Cambia colore al passaggio */
+}
+
+/* Stile per i link nel menu */
+/* Stile per il menu in orizzontale */
+nav ul {
+    list-style: none; /* Rimuove i puntini dall'elenco */
+    display: flex; /* Dispone gli elementi del menu in riga */
+    justify-content: center; /* Centra il menu orizzontalmente */
+    gap: 20px; /* Spazio tra le voci */
+    padding: 0; /* Rimuove il padding */
+}
+
+/* Stile per le voci del menu */
+nav ul li {
+    margin: 0; /* Nessun margine aggiuntivo */
+}
+
+/* Stile per i link del menu */
+nav ul li a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    font-weight: bold; /* Testo in grassetto */
+    color: #ff0000; /* Colore rosso */
+    position: relative; /* Necessario per il posizionamento della barra */
+    transition: color 0.3s ease; /* Animazione del colore */
+}
+
+/* Hover sul link */
+nav ul li a:hover {
+    color: #0000ff; /* Cambia il colore a azzurro */
+}
+
+/* Barra sotto i link */
+nav ul li a::after {
+    content: ""; /* Crea il contenuto */
+    position: absolute;
+    bottom: -5px; /* Posizione rispetto al testo */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Altezza della barra */
+    background: linear-gradient(to right, #ff0000 50%, #0000ff 50%); /* Ross'azzurro */
+    transform: scaleX(0); /* Nascondi la linea inizialmente */
+    transform-origin: left; /* Punto di partenza per l'animazione */
+    transition: transform 0.3s ease; /* Animazione fluida */
+}
+
+/* Hover per mostrare la barra */
+nav ul li a:hover::after {
+    transform: scaleX(1); /* Mostra la barra quando si va in hover */
+}
+
+/* Footer Generale */
+.footer {
+    background: #131316;
+    color: #e7e7e7;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Logo e descrizione */
+.footer-logo img {
+    max-width: 120px;
+    margin-bottom: 10px;
+}
+.footer-logo p {
+    max-width: 300px;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+/* Navigazione */
+.footer-nav h3,
+.footer-contact h3,
+.footer-social h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-nav ul,
+.footer-contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav ul li a,
+.footer-contact ul li a {
+    color: #e7e7e7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-nav ul li a:hover,
+.footer-contact ul li a:hover {
+    color: #00bcd4; /* Colore in hover */
+}
+
+/* Social Media */
+.footer-social .social-icons {
+    display: flex;
+    gap: 15px;
+}
+.footer-social .social-icons a {
+    color: #e7e7e7;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+.footer-social .social-icons a:hover {
+    color: #00bcd4;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-logo img {
+        margin: 0 auto;
+    }
+    .footer-social .social-icons {
+        justify-content: center;
+    }
+}
+/* Schermata di caricamento */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: #ff0000; /* Testo rosso */
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.loading-logo {
+    width: 100px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+.divisore {
+    width: 100%;
+    height: 10px; /* Altezza della barra */
+    background: linear-gradient(to right, #c90d09,black, #102e56);/* Colore della barra */
+    margin: 0px 0; /* Margine sopra e sotto la barra */
+    border: none; /* Rimuove eventuali bordi */
+}
+
+
+/* Titolo principale della sezione */
+.section-title {
+    position: absolute;
+    top: 20px; /* Posizionato sopra al centro */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    color: #e7e7e7;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Contenitore dei riquadri */
+.banner-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    width: 80%; /* Larghezza relativa */
+    margin: 0 auto;
+}
+
+/* Stile dei riquadri */
+/* Inizialmente fuori schermo */
+.banner {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    transform: translateX(-100%); /* Fuori schermo a sinistra */
+    opacity: 0; /* Invisibile */
+    transition: transform 0.8s ease, opacity 0.8s ease; /* Animazione fluida */
+}
+
+/* Stato visibile */
+.banner.visible {
+    transform: translateX(0); /* Ritorna alla posizione originale */
+    opacity: 1; /* Visibile */
+}
+
+/* Stato invisibile: esce dal viewport */
+.banner:not(.visible) {
+    transform: translateX(-100%); /* Torna fuori schermo a sinistra */
+    opacity: 0; /* Diventa invisibile */
+}
+/* Immagini nei riquadri */
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+/* Sottotitolo (in hover) */
+.banner .subtitle {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0; /* Invisibile inizialmente */
+    transition: opacity 0.3s ease;
+}
+
+.banner:hover .subtitle {
+    opacity: 1; /* Appare in hover */
+}
+
+/* Hover: animazione del riquadro */
+.banner:hover {
+    transform: scale(1.1); /* Ingrandisce leggermente il riquadro */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        color: #ff0000; /* Rosso */
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+        color: #0000ff; /* Azzurro */
+    }
+}
