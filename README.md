@@ -1,4 +1,4 @@
-Regole per la Repository del Sito del Team Formula SAE di Catania
+# Regole per la Repository del Sito del Team Formula SAE di Catania
 1. Finalità della Repository
 Obiettivo: Contenere il codice sorgente e la documentazione del sito web del Team, facilitando lo sviluppo collaborativo e mantenendo una struttura chiara e aggiornata.
 
