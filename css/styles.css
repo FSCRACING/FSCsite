@@ -1,0 +1,696 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stile generale del body */
+body {
+    margin: 0;
+    padding: 20px 0 0;
+    color: #fffdfd;
+    line-height: 1.6;
+    font-size: 18px;
+    overflow-x: hidden;
+    background-color: #000; /* Colore di fallback */
+}
+  /* Variabili tema */
+  :root {
+    --background-color: #001f3f;
+    --text-color: white;
+  }
+  
+  body.light-mode {
+    --background-color: #f4f4f4;
+    --text-color: black;
+  }
+  
+  /* Hero section */
+  .hero {
+    position: relative;
+    height: 100vh; /* Altezza della sezione hero */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    z-index: 10; /* Assicurati che sia sopra il container delle linee */
+  }
+  .theme-toggle {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  
+  /* Contenitore per le linee */
+  .line-container {
+    position: fixed;
+    z-index: 1;
+    pointer-events: none; /* Non interferisce con gli eventi del mouse */
+  }
+  
+  .bottom-left {
+    bottom: 50px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transform: rotate(-45deg); /* Inclinazione */
+  }
+  
+  .top-right {
+    top: 50px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transform: rotate(-45deg); /* Inclinazione */
+  }
+  
+  /* Linee generali */
+  .line {
+    width: 350px; /* Dimensioni */
+    height: 20px; /* Spessore */
+    background-color: transparent;
+    transition: transform 0.5s ease-in-out; /* Animazione fluida */
+  }
+  
+  /* Linee colori */
+  .line-red {
+    background-color: #e03d1e; /* Colore rosso */
+  }
+  
+  .line-blue {
+    background-color: #0069ad; /* Colore blu */
+  }
+  
+  .line-green {
+    background-color: #e03d1e; /* Colore verde */
+  }
+  
+  .line-yellow {
+    background-color: #0069ad; /* Colore giallo */
+  }
+  
+  /* Stato attivo */
+  .line-container.active .line {
+    transform: translate(0, 0); /* Entrano lungo il loro asse */
+  }
+  
+  /* Stato nascosto */
+  .bottom-left.hidden .line {
+    transform: translate(-150%, -150%); /* Escono lungo il loro asse */
+  }
+  
+  .top-right.hidden .line {
+    transform: translate(150%, 150%); /* Escono dal lato opposto */
+  }
+  
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    background: url('../images/sfondo.jpg') no-repeat center center;
+    background-size: contain; /* Mostra interamente l'immagine senza ritagli */
+    z-index: -1; /* Sposta lo sfondo sotto gli altri contenuti */
+}
+/* Quando lo sfondo scompare */
+body.scrolled {
+    background-color: black; /* Sostituisce l'immagine con un colore */
+    background-image: none; /* Rimuove l'immagine */
+}
+
+.loading-logo-desktoponly {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.loading-logo-mobileonly {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+    .loading-logo-desktoponly{
+        display: block;
+    }
+    .loading-logo-mobileonly
+    {
+        display: none;
+    }
+}
+@media (max-width: 768px) 
+{
+    .loading-logo-desktoponly{
+        display: none;
+    }
+    .loading-logo-mobileonly
+    {
+        display: block;
+    }
+}
+
+
+/* Hero Section */
+#hero {
+    position: relative;
+    height: 100vh; /* Occupa tutta l'altezza dello schermo */
+    background-color: var(--background-color); /* Tema dinamico */
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+  /* Variabili tema */
+  :root {
+    --background-color: #001f3e;
+    --text-color: white;
+  }
+  
+  hero.light-mode {
+    --background-color: #c3c3c3;
+    --text-color: black;
+  }
+/* Titolo sovrapposto */
+.hero-title {
+    font-size: 3rem; /* Dimensione del titolo */
+    font-weight: bold;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Ombra per il testo */
+    margin: 0;
+}
+.hero-divider {
+    width: 80px; /* Larghezza della riga */
+    height: 4px; /* Spessore della riga */
+    /*background-color: white; /* Colore della riga */ 
+    background: linear-gradient(to right, #e03d1e , rgba(255, 255, 255, 0.1), #0069ad);
+    border: none; /* Rimuove i bordi predefiniti */
+    margin: 20px 0; /* Spaziatura sopra e sotto la riga */
+}
+
+/* Sottotitolo */
+.hero-subtitle {
+    font-size: 1.5rem; /* Dimensione del sottotitolo */
+    font-weight: 300; /* Peso più leggero rispetto al titolo */
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombra più leggera per leggibilità */
+}
+/* Sezioni */
+.section {
+    position: relative;
+    height: 100vh; /* Ogni sezione occupa l'intero viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #001f3f; /* Sfondo */
+    color: #e7e7e7; /* Colore del testo */
+    overflow: hidden; /* Nasconde il contenuto animato fuori dalla vista */
+}
+
+/* Contenitore fisso */
+.container {
+    position: sticky; /* Rende il contenitore fisso */
+    top: 0; /* Si blocca al bordo superiore del viewport */
+    width: 100%;
+    height: 100%; /* Occupa l'intera sezione */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Titolo e contenuto */
+.title {
+    font-size: 3rem;
+    margin: 0;
+    opacity: 0; /* Inizialmente invisibile */
+    transform: translateY(-50px); /* Spostato verso l'alto */
+    transition: opacity 1s ease, transform 1s ease; /* Transizione fluida */
+}
+
+.content {
+    font-size: 2rem;
+    margin: 10px 0;
+    opacity: 0; /* Inizialmente invisibile */
+    transform: translateY(50px); /* Spostato verso il basso */
+    transition: opacity 1s ease, transform 1s ease; /* Transizione fluida */
+}
+
+
+/* Animazione attiva */
+.container.active .title,
+.container.active .content {
+    opacity: 1; /* Diventa visibile */
+    transform: translateY(0); /* Torna alla posizione originale */
+}
+/* Sezione con sfondo trasparente */
+#Navigazione {
+    position: relative;
+    height: 100vh; /* Occupa tutto il viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: url("../images/sfondo.jpeg");
+    background-size: cover;
+    transition: background 0.3s ease; /* Transizione per cambio sfondo */
+    backdrop-filter: blur(5px); /* Aggiunge sfocatura */
+}
+
+
+.fullscreen-section {
+    height: 100%; /* Ogni sezione copre l'intero schermo */
+    width: 100%;
+    padding: 40px 20px;
+    background-color: #f4f4f4; /* Sfondo uniforme per nascondere il precedente */
+    color: #333; /* Testo scuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.separatore {
+    width: 100%;
+    height: 10px; /* Altezza del separatore */
+    background: linear-gradient(to bottom, #131316, #18171c); /* Sfumatura dall'alto verso il basso */
+    margin: 0px 0; /* Margine sopra e sotto il separatore */
+    border: none; /* Rimuove eventuali bordi */
+}
+
+/* Barra menu generale */
+/* Barra menu generale */
+/* Barra menu generale */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Altezza maggiore in cima alla pagina */
+    background: linear-gradient(to right, #e03d1e ,black, #0069ad);
+    /*background-color: transparent;  Sfondo nero semi-trasparente */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    transition: all 0.3s ease; /* Transizione fluida per tutti i cambiamenti */
+}
+
+.navbar.scrolled {
+    height: 50px; /* Altezza ridotta */
+    background: linear-gradient(to right, #e03d1e , black, #0069ad);
+    border-radius: 20px; /* Bordi arrotondati */
+    width: calc(100% - 40px); /* Larghezza ridotta per margini */
+    margin-top: 20px; /* Spazio sopra la navbar durante lo scroll */
+    margin-left: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+/* Logo */
+.navbar-logo {
+    height: 70px; /* Altezza maggiore in cima */
+    transition: height 0.3s ease; /* Transizione fluida */
+}
+
+.navbar.scrolled .navbar-logo {
+    height: 50px; /* Altezza ridotta del logo */
+}
+
+
+/* Contenitore logo e menu */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Allinea il contenuto all'intera larghezza */
+}
+
+
+/* Menu */
+.navbar-menu ul {
+    list-style: none;
+    display: flex; /* Dispone le voci in riga */
+    gap: 30px; /* Spazio tra le voci */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; /* Testo bianco */
+    transition: color 0.3s ease;
+}
+
+.navbar-menu ul li a:hover {
+    color: #0069ad; /* Cambia colore al passaggio */
+}
+
+/* Stile per i link nel menu */
+/* Stile per il menu in orizzontale */
+nav ul {
+    list-style: none; /* Rimuove i puntini dall'elenco */
+    display: flex; /* Dispone gli elementi del menu in riga */
+    justify-content: center; /* Centra il menu orizzontalmente */
+    gap: 20px; /* Spazio tra le voci */
+    padding: 0; /* Rimuove il padding */
+}
+
+/* Stile per le voci del menu */
+nav ul li {
+    margin: 0; /* Nessun margine aggiuntivo */
+}
+
+/* Stile per i link del menu */
+nav ul li a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    font-weight: bold; /* Testo in grassetto */
+    color: #e03d1e ; /* Colore rosso */
+    position: relative; /* Necessario per il posizionamento della barra */
+    transition: color 0.3s ease; /* Animazione del colore */
+}
+
+/* Hover sul link */
+nav ul li a:hover {
+    color: #001f3e; /* Cambia il colore a azzurro */
+}
+
+/* Barra sotto i link */
+nav ul li a::after {
+    content: ""; /* Crea il contenuto */
+    position: absolute;
+    bottom: -5px; /* Posizione rispetto al testo */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Altezza della barra */
+    background: linear-gradient(to right, #e03d1e 50%, #001f3e 50%); /* Ross'azzurro */
+    transform: scaleX(0); /* Nascondi la linea inizialmente */
+    transform-origin: left; /* Punto di partenza per l'animazione */
+    transition: transform 0.3s ease; /* Animazione fluida */
+}
+
+/* Hover per mostrare la barra */
+nav ul li a:hover::after {
+    transform: scaleX(1); /* Mostra la barra quando si va in hover */
+}
+
+/* Footer Generale */
+.footer {
+    background: #131316;
+    color: #e7e7e7;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Logo e descrizione */
+.footer-logo img {
+    max-width: 120px;
+    margin-bottom: 10px;
+}
+.footer-logo p {
+    max-width: 300px;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+/* Navigazione */
+.footer-nav h3,
+.footer-contact h3,
+.footer-social h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-nav ul,
+.footer-contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav ul li a,
+.footer-contact ul li a {
+    color: #e7e7e7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-nav ul li a:hover,
+.footer-contact ul li a:hover {
+    color: #001f3e; /* Colore in hover */
+}
+
+/* Social Media */
+.footer-social .social-icons {
+    display: flex;
+    gap: 15px;
+}
+.footer-social .social-icons a {
+    color: #e7e7e7;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+.footer-social .social-icons a:hover {
+    color: #001f3e;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-logo img {
+        margin: 0 auto;
+    }
+    .footer-social .social-icons {
+        justify-content: center;
+    }
+}
+/* Schermata di caricamento */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: #ff0000; /* Testo rosso */
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.loading-logo {
+    width: 100px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+.divisore {
+    width: 100%;
+    height: 10px; /* Altezza della barra */
+    background: linear-gradient(to right, #e03d1e,rgba(255, 255, 255, 0.1), #001f3e);/* Colore della barra */
+    margin: 0px 0; /* Margine sopra e sotto la barra */
+    border: none; /* Rimuove eventuali bordi */
+}
+/* Stile generale per la sezione "Chi Siamo" */
+.about-section {
+    position: relative;
+    padding: 80px 20px;
+    background: #102e56;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Layer intermedio: Scrolling Text */
+.scrolling-text-layer {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    transform: translateY(-50%);
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none; /* Il layer non blocca l'interazione con gli altri contenuti */
+}
+
+.scrolling-line {
+    white-space: nowrap;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.1); /* Testo semi-trasparente */
+    animation: scroll-horizontal 15s linear infinite;
+}
+
+.scrolling-line.reverse {
+    animation-direction: reverse;
+}
+
+.scrolling-line p {
+    display: inline-block;
+    margin: 0;
+    padding: 0 20px;
+}
+
+/* Animazione scrolling orizzontale */
+@keyframes scroll-horizontal {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Contenuto principale */
+.about-content {
+    position: relative;
+    z-index: 2; /* Sovrapposto al layer intermedio */
+}
+
+.about-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.about-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Titolo principale della sezione */
+.section-title {
+    position: absolute;
+    top: 20px; /* Posizionato sopra al centro */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    color: #e7e7e7;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Contenitore dei riquadri */
+.banner-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    width: 80%; /* Larghezza relativa */
+    margin: 0 auto;
+}
+
+/* Stile dei riquadri */
+/* Inizialmente fuori schermo */
+.banner {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    transform: translateX(-100%); /* Fuori schermo a sinistra */
+    opacity: 0; /* Invisibile */
+    transition: transform 0.8s ease, opacity 0.8s ease; /* Animazione fluida */
+}
+
+/* Stato visibile */
+.banner.visible {
+    transform: translateX(0); /* Ritorna alla posizione originale */
+    opacity: 1; /* Visibile */
+}
+
+/* Stato invisibile: esce dal viewport */
+.banner:not(.visible) {
+    transform: translateX(-100%); /* Torna fuori schermo a sinistra */
+    opacity: 0; /* Diventa invisibile */
+}
+/* Immagini nei riquadri */
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+/* Sottotitolo (in hover) */
+.banner .subtitle {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0; /* Invisibile inizialmente */
+    transition: opacity 0.3s ease;
+}
+
+.banner:hover .subtitle {
+    opacity: 1; /* Appare in hover */
+}
+
+/* Hover: animazione del riquadro */
+.banner:hover {
+    transform: scale(1.1); /* Ingrandisce leggermente il riquadro */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        color: #ff0000; /* Rosso */
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+        color: #0000ff; /* Azzurro */
+    }
+}
