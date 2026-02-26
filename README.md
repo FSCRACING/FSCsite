@@ -1,130 +1,75 @@
-# React + TypeScript + Vite
+# Regole per la Repository del Sito del Team Formula SAE di Catania
+1. Finalità della Repository
+Obiettivo: Contenere il codice sorgente e la documentazione del sito web del Team, facilitando lo sviluppo collaborativo e mantenendo una struttura chiara e aggiornata.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2. Branching Model
+Branch Principale (main): Contiene sempre la versione stabile e pronta per la produzione del sito.
 
-Currently, two official plugins are available:
+Branch di Sviluppo (develop): Utilizzato per integrare nuove funzionalità e correzioni; successivamente, le modifiche vengono unite nel branch main dopo revisione e testing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Branch per Feature/Fix: Creare branch dedicati per ogni nuova funzionalità o correzione, utilizzando convenzioni di naming come:
 
-## React Compiler
+feature/nome-funzionalità
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+fix/nome-bug
 
-## Expanding the ESLint configuration
+3. Commit e Messaggi
+Commit frequenti e chiari: Ogni commit deve essere mirato e includere un messaggio descrittivo che spieghi il cambiamento, ad esempio:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+"Aggiunta sezione sponsor"
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+"Correzione bug menu mobile"
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Standard di messaggistica: Seguire un formato coerente per facilitare la lettura della cronologia delle modifiche.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4. Pull Requests e Revisione del Codice
+Creazione di Pull Request: Prima di fondere modifiche nei branch develop o main, aprire una pull request.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Revisione: Ogni pull request deve essere revisionata e approvata da almeno un altro membro del team.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Descrizioni dettagliate: Includere nelle pull request una descrizione completa dei cambiamenti, eventuali screenshot o demo, e riferimenti alle issue correlate.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+5. Stile del Codice e Best Practices
+Coerenza: Seguire le linee guida di stile per i linguaggi utilizzati (HTML, CSS, JavaScript, ecc.).
 
-## Decap CMS + GitHub Login (Proxy)
+Linter e Formattazione: Utilizzare strumenti di linting (ad es. ESLint, stylelint) per mantenere un codice uniforme e leggibile.
 
-L'area riservata è disponibile su `/admin/` e usa Decap CMS.
+Struttura organizzata: Mantenere una struttura di cartelle logica che faciliti la navigazione e la manutenzione del progetto.
 
-### 1) Configura il backend GitHub
+6. Documentazione
+README.md: Aggiornare il file README con istruzioni chiare per l’installazione, l’uso e le modalità di contribuzione.
 
-Apri [public/admin/config.yml](public/admin/config.yml) e sostituisci:
+Commenti: Utilizzare commenti esplicativi nel codice per migliorare la comprensione e la manutenibilità.
 
-- `repo: YOUR_GITHUB_ORG_OR_USER/YOUR_REPO_NAME`
-- `base_url: https://YOUR-DECAP-OAUTH-PROXY-DOMAIN`
+Aggiornamenti: Ogni modifica rilevante deve essere accompagnata dall’aggiornamento della documentazione.
 
-Il dominio `base_url` deve essere il tuo proxy OAuth Decap (endpoint con `/auth`).
+7. Gestione dei Problemi (Issues)
+Segnalazione Bug e Richieste: Utilizzare la sezione Issues per segnalare errori, richiedere nuove funzionalità o proporre miglioramenti.
 
-### 2) Avvio locale con proxy Decap
+Dettaglio e Riproducibilità: Fornire descrizioni dettagliate e, se possibile, i passi per riprodurre eventuali problemi.
 
-In due terminali separati:
+Etichettatura: Utilizzare le etichette (labels) per classificare e organizzare le issue in modo efficiente.
 
-```bash
-npm run dev
-npm run decap:proxy
-```
+8. Sicurezza e Dati Sensibili
+Nessun Dato Sensibile: Non inserire credenziali, chiavi API o altri dati riservati nel repository.
 
-Poi apri `http://localhost:5173/admin/`.
+.gitignore: Utilizzare il file .gitignore per escludere file e cartelle che contengono informazioni sensibili o non necessarie alla distribuzione.
 
-### 3) Dati membri modificabili
+9. Licenza e Copyright
+Licenza: Specificare la licenza del progetto nel file LICENSE e assicurarsi che il codice e i contenuti siano conformi alle normative vigenti.
 
-Decap modifica il file [public/dev/data/members.json](public/dev/data/members.json), letto dalle pagine reparto con mapping:
+Attribuzione: Garantire il corretto riconoscimento del lavoro svolto da ciascun collaboratore.
 
-- `dept: elettrica` + `unit: high_voltage` → High Voltage
-- `dept: elettrica` + `unit: low_voltage` → Low Voltage
-- `dept: meccanica` + `unit: vehicle_dynamics` → Vehicle Dynamics
-- `dept: meccanica` + `unit: mechanical_design` → Mechanical Design
-- `dept: meccanica` + `unit: aerodynamics` → Aerodynamics
-- `dept: management` → Management
+10. Aggiornamenti e Manutenzione
+Merge e Rilasci: Effettuare regolarmente merge dal branch develop al branch main dopo approfonditi test e revisioni.
 
-Le card con `special: true` vengono renderizzate come card capo reparto (grande).
+Monitoraggio: Tenere sotto controllo pull request e issues per una rapida risoluzione dei problemi e mantenere la repository aggiornata.
 
-## Publish su GitHub Pages
+11. Comunicazione e Collaborazione
+Canali di Comunicazione: Utilizzare strumenti interni (es. Slack, Discord, email) per discutere idee, dubbi e suggerimenti relativi al progetto.
 
-Il progetto include workflow automatico in [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml).
+Collaborazione: Promuovere un ambiente collaborativo, rispettoso e proattivo, in cui ogni contributo viene valutato e apprezzato.
 
-1. Crea un repository GitHub e collega il remote locale.
-2. Fai push sul branch `main`.
-3. In GitHub vai su **Settings → Pages** e imposta **Build and deployment = GitHub Actions**.
-4. Attendi il completamento del workflow **Deploy to GitHub Pages**.
 
-Comandi tipici:
-
-```bash
-git init
-git add .
-git commit -m "Initial publish setup"
-git branch -M main
-git remote add origin https://github.com/<OWNER>/<REPO>.git
-git push -u origin main
-```
+# FSCsite
+test

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FSC Racing Team</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="FSC Racing Team" />
+<link rel="manifest" href="images/site.webmanifest" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Roboto">
+<style>
+    .form-section {
+        background: url('images/sfondi/aerodinamica.jpg')center center / cover no-repeat;;
+        padding: 60px 20px;
+        color: white;
+        text-align: center;
+      }
+      .form-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      }
+      .form-container {
+        /* wrapper responsivo 16:9 */
+        position: relative;
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding-bottom: 56.25%; /* 16:9 */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        border-radius: 12px;
+        overflow: hidden;
+        background: white;
+      }
+      .form-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    .body {
+        font-family: "Audiowide", sans-serif;
+    }
+    
+/* Sezione Contatti */
+.contact-section {
+    background-color: rgba(27, 27, 27, 0.9); /* Sfondo semi-trasparente */
+    padding: 60px 20px;
+    text-align: center;
+    color: #ffffff; /* Testo bianco */
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Ombra per dare profondità */
+    margin: 40px auto;
+    width: 80%; /* Larghezza generale */
+    max-width: 1000px; /* Larghezza massima */
+}
+
+/* Titolo della sezione */
+.contact-section h2 {
+    font-size: 2.5rem; /* Titolo grande e leggibile */
+    color: #e03d1e; /* Verde brillante */
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Tutto maiuscolo */
+    letter-spacing: 2px; /* Spaziatura tra le lettere */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Effetto ombra */
+}
+
+/* Testo descrittivo */
+.contact-section p {
+    font-size: 1.2em; /* Testo chiaro e leggibile */
+    color: #e0e0e0; /* Grigio chiaro */
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Form Contatti */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Spazio tra gli input */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%; /* Larghezza del contenitore */
+    max-width: 600px; /* Larghezza massima */
+    padding: 15px;
+    border: 2px solid #e03d1e; /* Bordo verde brillante */
+    border-radius: 5px; /* Angoli arrotondati */
+    background-color: #333333; /* Sfondo scuro */
+    color: #ffffff; /* Testo bianco */
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transizione morbida */
+}
+
+/* Effetto al focus degli input */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #e03d1e; /* Cambia colore del bordo al focus */
+    box-shadow: 0 0 8px #e03d1e; /* Aggiunge un'ombra luminosa */
+    outline: none; /* Rimuove il bordo predefinito */
+}
+
+/* Pulsante di invio */
+.contact-form button {
+    background-color: #e03d1e; /* Verde brillante */
+    color: #ffffff; /* Testo bianco */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px; /* Pulsante arrotondato */
+    font-size: 1.2em; /* Dimensione del testo */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Effetto hover sul pulsante */
+.contact-form button:hover {
+    background-color: #e03d1e; /* Colore più luminoso */
+    transform: scale(1.05); /* Leggero effetto zoom */
+}
+
+/* Linea separatrice */
+.contact-divider {
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(to right, #e03d1e, #ffffff);
+    margin: 30px auto;
+    border-radius: 2px;
+}
+
+    </style>
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+  emailjs.init({
+    publicKey: "EZoeTiMOVjbTneoi6",
+  });
+})();
+</script>
+</head>
+<body>
+
+    <div id="loading-screen">
+        <img src="images/gifpc.gif" alt="Logo pc" class="loading-logo-desktoponly">
+        <img src="images/gifmobile.gif" alt="Logo mobile" class="loading-logo-mobileonly">
+    </div>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html">
+            <img src="images/logo.png" alt="Logo FSC" class="navbar-logo">
+            </a>
+            <nav class="navbar-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <!--<li><a href="#squadra">la nostra squadra</a></li> -->
+                    <li><a href="doom/index.html">ㅤ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="form-section">
+        <h2>Vieni A Gareggiare Con Noi!</h2>
+        <h3>Compila il form e sarai contattato da noi!</h3>
+        <form class="contact-form" action="#" method="post" id="contactForm">
+            <input type="text" name="name" placeholder="Il tuo nome" required>
+            <input type="email" name="email" placeholder="La tua email" required>
+            <textarea name="message" rows="5" placeholder="Il tuo messaggio" required></textarea>
+            <button type="submit">Invia</button>
+        </form>
+      </section>
+
+    </div>
+    <div class="divisore"></div>
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Logo e descrizione -->
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Logo FSC">
+                
+            </div>
+    
+            <!-- Navigazione -->
+            <div class="footer-nav">
+                <h3>Link Utili</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+
+                </ul>
+            </div>
+    
+            <!-- Contatti -->
+            <div class="footer-contact">
+                <h3>Contatti</h3>
+                <ul>
+                    <li>Email: <a href="mailto:fsc_generale@outlook.it">fsc_generale@outlook.it</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media -->
+            <div class="footer-social">
+                <h3>Seguici</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/fsc_racingteam/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 FSC Racing Team. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+    <script src="js/script.js"></script>
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault(); // Evita il refresh della pagina
+
+            const params = {
+                from_name: document.querySelector('input[name="name"]').value,
+                reply_to: document.querySelector('input[name="email"]').value,
+                message: document.querySelector('textarea[name="message"]').value,
+            };
+
+            const serviceID = "fscsiteform";
+            const templateID = "FSCRACING0101";
+
+            emailjs.send(serviceID, templateID, params)
+                .then(function (response) {
+                    console.log("SUCCESS!", response.status, response.text);
+                    alert("Email inviata con successo!");
+                }, function (error) {
+                    console.log("FAILED...", error);
+                    alert("C'è stato un problema nell'invio dell'email.");
+                });
+        });
+    </script>
+
+</html>

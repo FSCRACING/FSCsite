@@ -1,13 +1,368 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fsae-demo</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>FSC Racing Team</title>
+
+  <!-- CSS / Fonts -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="FSC Racing Team" />
+  <link rel="manifest" href="images/site.webmanifest" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Roboto">
+
+  <!-- Theme override (bicromia) + SEZIONE TEAM (originale test2) -->
+ 
+</head>
+
+<body>
+  <!-- LOADING -->
+  <div id="loading-screen">
+    <img src="images/gifpc.gif" alt="Logo pc" class="loading-logo-desktoponly">
+    <img src="images/gifmobile.gif" alt="Logo mobile" class="loading-logo-mobileonly">
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="#hero"><img src="images/logo.png" alt="Logo FSC" class="navbar-logo"></a>
+      <nav class="navbar-menu">
+        <ul>
+          <li><a href="#chi-siamo">Chi Siamo</a></li>
+          <li><a href="form.html">Contatti</a></li>
+          <li><a href="#team">il Team</a></li>
+          <li><a href="doom/index.html">ㅤ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="fullscreen-section">
+    <h1 class="hero-title">FSC Racing Team</h1>
+    <hr class="hero-divider">
+    <p class="hero-subtitle">Formula Student Catania</p>
+  </section>
+
+  <!-- linee decorative -->
+  <div class="line-container bottom-left">
+    <div class="line line-red"></div>
+    <div class="line line-blue"></div>
+  </div>
+  <div class="line-container top-right">
+    <div class="line line-green"></div>
+    <div class="line line-yellow"></div>
+  </div>
+
+  <div class="divisore"></div>
+
+  <!-- =================== NUOVA SEZIONE "CHI SIAMO" (da test3) =================== -->
+  <section id="chi-siamo">
+    <div class="container">
+      <section class="intro" aria-label="Presentazione del team">
+        <div class="logo-box">
+          <img src="images/logo.png" alt="Logo FSC Racing Team">
+        </div>
+        <div class="about">
+          <div class="kicker">Chi siamo</div>
+          <h2>FSC Racing Team — Formula SAE Catania</h2>
+          <p>Siamo studenti e studentesse dell’Università di Catania che progettano e realizzano una vettura per competere nella <b>Formula SAE</b>. Uniamo <span class="accent">ingegneria</span>, <span class="accent">design</span> e <span class="accent">management</span>.</p>
+          <p>Dal powertrain all’aerodinamica, dalla dinamica veicolo alla comunicazione: il nostro obiettivo è crescere come squadra e fare bene in gara.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Collage asimmetrico desktop/tablet -->
+    <section class="collage-wrap" aria-label="Collage del team">
+      <div class="collage">
+        <figure class="tile i1"><img src="images/collage-1.jpeg" alt="Team Presentation"></figure>
+        <figure class="tile i2"><img src="images/collage-2.jpeg" alt="Site Launch"></figure>
+        <figure class="tile i3"><img src="images/collage-3.jpg" alt="Dettagli meccanici"></figure>
+        <figure class="tile i4"><img src="images/collage-4.jpg" alt="Team Briefing"></figure>
+        <figure class="tile i5"><img src="images/collage-5.jpg" alt="Site "></figure>
+        <figure class="tile i6"><img src="images/collage-6.jpg" alt="Managerial Meeting"></figure>
+      </div>
+    </section>
+
+    <!-- Pila di polaroid (solo mobile) -->
+    <section class="polaroid-stack" aria-label="Galleria mobile">
+      <div class="stack" id="polaroidStack">
+        <figure class="polaroid"><div class="polaroid__frame"><img src="images/collage-1.jpeg" alt="Team Presentation"><figcaption>Team Presentation</figcaption></div></figure>
+        <figure class="polaroid"><div class="polaroid__frame"><img src="images/collage-2.jpeg" alt="Site Launch"><figcaption>Site Presentation</figcaption></div></figure>
+        <figure class="polaroid"><div class="polaroid__frame"><img src="images/collage-3.jpg" alt="Dettagli meccanici"><figcaption>Dettagli Meccanici</figcaption></div></figure>
+        <figure class="polaroid"><div class="polaroid__frame"><img src="images/collage-4.jpg" alt="Team Briefing"><figcaption>Team Briefing</figcaption></div></figure>
+        <figure class="polaroid"><div class="polaroid__frame"><img src="images/collage-5.jpg" alt="Site Presentation"><figcaption>Logo Designing</figcaption></div></figure>
+        <figure class="polaroid"><div class="polaroid__frame"><img src="images/collage-6.jpg" alt="Managerial Meeting"><figcaption>Managerial Meeting</figcaption></div></figure>
+      </div>
+      <div class="swipe-hint" aria-hidden="true">Swipe ⇄</div>
+    </section>
+  </section>
+  <!-- =================== /NUOVA SEZIONE "CHI SIAMO" =================== -->
+
+  <div class="divisore"></div>
+
+  <!-- NAVIGAZIONE REPARTI (resta invariata) -->
+  <section id="team" aria-label="Esplora il team">
+    <div class="topbar"><span class="pip"></span> Esplora il Team</div>
+    <div class="wrap">
+      <div class="preview">
+        <img id="team-img-a" class="show" src="images/test mgmt.jpeg" alt="Anteprima reparto selezionato" onerror="this.src='images/test mgmt.jpeg'">
+        <img id="team-img-b" src="" alt="" aria-hidden="true">
+        <a id="team-hotspot" class="hotspot" href="management.html" aria-label="Visita reparto attivo">
+          <span class="hotspot-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="right">
+        <ul class="rail" id="team-rail" hidden>
+          <li><button class="thumb active" data-id="t1" aria-label="Management"><img src="images/management.jpg" onerror="this.src='images/management.jpg'" alt="Management"></button></li>
+          <li><button class="thumb" data-id="t2" aria-label="Elettrico"><img src="images/elettrica.png" onerror="this.src='images/elettrica.jpg'" alt="Elettrico"></button></li>
+          <li><button class="thumb" data-id="t3" aria-label="Meccanica"><img src="images/meccanica.png" onerror="this.src='images/meccanica.jpg'" alt="Meccanica"></button></li>
+        </ul>
+
+        <section class="details" id="team-details" hidden>
+          <div class="kicker">Management</div>
+          <h3 class="title">Gestione & Strategie</h3>
+          <p class="excerpt">Coordinamento, sponsor, comunicazione e operations del team.</p>
+        </section>
+
+        <div class="cards" id="team-cards">
+          <article class="card active" data-id="t1" data-preview="images/test mgmt.jpeg" data-link="management.html" data-kicker="Management" data-title="Gestione & Strategie" data-excerpt="Coordinamento, sponsor, comunicazione e operations del team.">
+            <div>
+              <div class="kicker">Management</div>
+              <h3 class="title">Gestione & Strategie</h3>
+              <p class="excerpt">Coordinamento, sponsor, comunicazione e operations del team.</p>
+            </div>
+            <a class="chev" href="management.html" aria-label="Vai a Management"><svg viewBox="0 0 24 24"><path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z"/></svg></a>
+          </article>
+
+          <article class="card" data-id="t2" data-preview="images/repertorio-elec.jpg" data-link="electric.html" data-kicker="Elettrico" data-title="Low Voltage & High Voltage" data-excerpt="Powertrain, accumulator, LV, controllo e integrazione ECU.">
+            <div>
+              <div class="kicker">Elettrica</div>
+              <h3 class="title">Low Voltage & High Voltage</h3>
+              <p class="excerpt">Powertrain, accumulator, LV, controllo e integrazione ECU.</p>
+            </div>
+            <a class="chev" href="electric.html" aria-label="Vai a Elettrico"><svg viewBox="0 0 24 24"><path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z"/></svg></a>
+          </article>
+
+          <article class="card" data-id="t3" data-preview="images/repertorio-mech.jpg" data-link="mech.html" data-kicker="Meccanica" data-title="Chassis, Dinamica & Aero" data-excerpt="Telaio, sospensioni, freni, ergonomia, pacchetto aero e produzione.">
+            <div>
+              <div class="kicker">Meccanica</div>
+              <h3 class="title">Chassis, Dinamica & Aero</h3>
+              <p class="excerpt">Telaio, sospensioni, freni, ergonomia, pacchetto aero e produzione.</p>
+            </div>
+            <a class="chev" href="mech.html" aria-label="Vai a Meccanica"><svg viewBox="0 0 24 24"><path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="divisore"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo"><img src="images/logo.png" alt="Logo FSC"></div>
+      <div class="footer-nav">
+        <h3>LINK UTILI</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#chi-siamo">Chi Siamo</a></li>
+          <li><a href="form.html">Contatti</a></li>
+        </ul>
+      </div>
+      <div id="contat" class="footer-contact">
+        <h3>CONTATTI</h3>
+        <ul><li>EMAIL: <a href="mailto:fsc_generale@outlook.it">fsc_generale@outlook.it</a></li></ul>
+      </div>
+      <div class="footer-social">
+        <h3>SEGUICI</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/fsc_racingteam/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 FSC Racing Team. Tutti i diritti riservati.</p></div>
+  </footer>
+
+  <!-- JS esistente -->
+  <script src="js/script.js"></script>
+
+  <!-- JS team (originale test2) -->
+  <script>
+    (function(){
+      const imgA = document.getElementById('team-img-a');
+      const imgB = document.getElementById('team-img-b');
+      const cards = document.getElementById('team-cards');
+      const rail  = document.getElementById('team-rail');
+      const details = document.getElementById('team-details');
+      const hotspot = document.getElementById('team-hotspot');
+      const mql = window.matchMedia('(max-width: 860px)');
+
+      function swapPreview(src){
+        if(!src || imgA.getAttribute('src') === src) return;
+        imgB.src = src; imgB.classList.add('show'); imgA.classList.remove('show');
+        setTimeout(()=>{ imgA.src = src; imgA.classList.add('show'); imgB.classList.remove('show'); }, 180);
+      }
+
+      function setActiveById(id, src, kicker, title, excerpt, link){
+        document.querySelectorAll('#team-cards .card').forEach(c=>{
+          c.classList.toggle('active', c.dataset.id===id);
+        });
+        swapPreview(src);
+        if(details){
+          details.querySelector('.kicker').textContent = kicker;
+          details.querySelector('.title').textContent  = title;
+          details.querySelector('.excerpt').textContent= excerpt;
+        }
+        document.querySelectorAll('#team .thumb').forEach(t=>t.classList.toggle('active', t.dataset.id===id));
+        if(hotspot) hotspot.href = link || '#';
+      }
+
+      if(cards){
+        cards.addEventListener('mouseover', e=>{
+          const card=e.target.closest('.card'); if(!card) return;
+          swapPreview(card.dataset.preview);
+        });
+        cards.addEventListener('focusin', e=>{
+          const card=e.target.closest('.card'); if(!card) return;
+          swapPreview(card.dataset.preview);
+        });
+        cards.addEventListener('mouseleave', ()=>{
+          const active=document.querySelector('#team-cards .card.active');
+          if(active) swapPreview(active.dataset.preview);
+        });
+        cards.addEventListener('click', e=>{
+          const card=e.target.closest('.card'); if(!card) return;
+          setActiveById(
+            card.dataset.id,
+            card.dataset.preview,
+            card.dataset.kicker,
+            card.dataset.title,
+            card.dataset.excerpt,
+            card.dataset.link
+          );
+        });
+      }
+
+      if(rail){
+        rail.addEventListener('click', e=>{
+          const btn=e.target.closest('.thumb'); if(!btn) return;
+          const card=document.querySelector(`#team-cards .card[data-id="${btn.dataset.id}"]`);
+          if(card){
+            setActiveById(
+              card.dataset.id,
+              card.dataset.preview,
+              card.dataset.kicker,
+              card.dataset.title,
+              card.dataset.excerpt,
+              card.dataset.link
+            );
+          }
+        });
+      }
+
+      function applyMode(){
+        const isMobile = mql.matches;
+        const cardsBox = document.getElementById('team-cards');
+        if(isMobile){
+          rail.hidden    = false;
+          details.hidden = false;
+          cardsBox.style.display='none';
+        }else{
+          rail.hidden    = true;
+          details.hidden = true;
+          cardsBox.style.display='flex';
+        }
+      }
+      mql.addEventListener('change', applyMode);
+      applyMode();
+
+      const first = document.querySelector('#team-cards .card.active');
+      if(first){
+        setActiveById(
+          first.dataset.id,
+          first.dataset.preview,
+          first.dataset.kicker,
+          first.dataset.title,
+          first.dataset.excerpt,
+          first.dataset.link
+        );
+      }
+    })();
+  </script>
+
+  <!-- JS per SWIPE pila di polaroid (da test3) -->
+  <script>
+    (function(){
+      const stack = document.getElementById('polaroidStack');
+      if(!stack) return;
+
+      const topCard = () => stack.lastElementChild;
+
+      function goNext(){
+        const card = topCard();
+        if(!card) return;
+        card.classList.add('go-next');
+        const onEnd = () => {
+          card.removeEventListener('transitionend', onEnd);
+          stack.insertBefore(card, stack.firstElementChild);
+          card.classList.remove('go-next');
+        };
+        card.addEventListener('transitionend', onEnd);
+      }
+
+      function goPrev(){
+        const first = stack.firstElementChild;
+        if(!first) return;
+        first.classList.add('from-prev');
+        stack.appendChild(first);
+        requestAnimationFrame(()=>{ first.classList.add('go-in'); });
+        const onEnd = () => {
+          first.removeEventListener('transitionend', onEnd);
+          first.classList.remove('from-prev','go-in');
+        };
+        first.addEventListener('transitionend', onEnd);
+      }
+
+      let startX = 0, startY = 0, dragging = false;
+      const THRESH = 28;
+
+      const onDown = (e) => {
+        const t = e.touches ? e.touches[0] : e;
+        startX = t.clientX; startY = t.clientY; dragging = true;
+      };
+      const onMove = (e) => {
+        if(!dragging) return;
+        const t = e.touches ? e.touches[0] : e;
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        if(Math.abs(dx) < THRESH || Math.abs(dx) < Math.abs(dy)) return;
+        dragging = false;
+        dx < 0 ? goNext() : goPrev();
+      };
+      const onUp = () => { dragging = false; };
+
+      stack.addEventListener('touchstart', onDown, {passive:true});
+      stack.addEventListener('touchmove',  onMove, {passive:true});
+      stack.addEventListener('touchend',   onUp,   {passive:true});
+      stack.addEventListener('pointerdown', onDown);
+      stack.addEventListener('pointermove', onMove);
+      stack.addEventListener('pointerup',   onUp);
+
+      stack.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft'){ goPrev(); }
+        if(e.key === 'ArrowRight'){ goNext(); }
+      });
+    })();
+  </script>
+</body>
 </html>
