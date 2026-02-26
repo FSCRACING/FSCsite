@@ -1,0 +1,5 @@
+@import "tailwindcss";
+:root { color-scheme: dark; }
+
+/* opzionale: “feels” più pro quando scrolli orizzontale */
+html, body { height: 100%; overflow: hidden; }

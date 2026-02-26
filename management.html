@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team FSC - Management</title>
+
+  <link rel="stylesheet" href="css/management.css">
+  <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="FSC UNICT" />
+  <link rel="manifest" href="images/site.webmanifest" />
+</head>
+
+<body data-dept="management">
+
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Logo FSC UniCT" class="navbar-logo">
+      </a>
+      <nav class="navbar-menu">
+        <ul>
+          <li><a href="index.html#hero">Chi Siamo?</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="chi-siamo">
+    <div class="container">
+      <section class="intro" aria-label="Presentazione del team">
+        <div class="logo-box">
+          <img src="images/logo.png" alt="Logo FSC Racing Team">
+        </div>
+        <div class="about">
+          <h2>Reparto Management</h2>
+          <p>Il fulcro della pianificazione e della gestione del nostro progetto. Coordiniamo risorse, tempi e budget
+            per garantire che ogni aspetto del lavoro sia efficiente e allineato agli obiettivi del team.</p>
+          <p>Dalla strategia alla comunicazione, il nostro compito è rendere il Team FSC un'unità coesa e orientata al
+            successo.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Collage asimmetrico desktop/tablet -->
+    <section class="collage-wrap" aria-label="Collage del team">
+      <div class="collage">
+        <figure class="tile i1"><img src="images/collage-mgmt/collage-1.jpeg" alt="Team Presentation"></figure>
+        <figure class="tile i2"><img src="images/collage-mgmt/collage-3.jpg" alt="Site Launch"></figure>
+        <figure class="tile i3"><img src="images/collage-mgmt/collage-2.jpeg" alt="Dettagli meccanici"></figure>
+      </div>
+    </section>
+
+    <!-- Pila di polaroid (solo mobile) -->
+    <section class="polaroid-stack" aria-label="Galleria mobile">
+      <div class="stack" id="polaroidStack">
+        <figure class="polaroid">
+          <div class="polaroid__frame"><img src="images/collage-mgmt/collage-1.jpeg" alt="Talking">
+            <figcaption>Talking</figcaption>
+          </div>
+        </figure>
+        <figure class="polaroid">
+          <div class="polaroid__frame"><img src="images/collage-mgmt/collage-2.jpeg" alt="Site Launch">
+            <figcaption>Planning</figcaption>
+          </div>
+        </figure>
+        <figure class="polaroid">
+          <div class="polaroid__frame"><img src="images/collage-mgmt/collage-3.jpg" alt="Dettagli meccanici">
+            <figcaption>Working</figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="swipe-hint" aria-hidden="true">Swipe ⇄</div>
+    </section>
+  </section>
+
+  <div class="divisore"></div>
+
+  <main class="page">
+    <div class="header"><span class="pip"></span> Management</div>
+
+    <section class="grid" aria-label="Management Team">
+      <!-- Special cards (una sotto l'altra, clonate da JS) -->
+      <a id="coo-card" class="card card--coo" href="#" target="_blank" rel="noopener" aria-label="Profilo LinkedIn COO">
+        <div class="media"></div>
+        <div class="content">
+          <div class="role">Chief Operating Officer</div>
+          <div class="name">—</div>
+          <p class="role" style="letter-spacing:.02em; text-transform:none;">—</p>
+        </div>
+        <span class="arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z" />
+          </svg>
+        </span>
+      </a>
+
+      <!-- Liste per sottosezione -->
+      <div class="list" data-unit="management"></div>
+      <div class="list" data-unit="professori"></div>
+    </section>
+  </main>
+
+  <div class="divisore"></div>
+
+  <footer class="footer">
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo"><img src="images/logo.png" alt="Logo FSC"></div>
+        <div class="footer-nav">
+          <h3>LINK UTILI</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#chi-siamo">Chi Siamo</a></li>
+            <li><a href="form.html">Contatti</a></li>
+          </ul>
+        </div>
+        <div id="contat" class="footer-contact">
+          <h3>CONTATTI</h3>
+          <ul>
+            <li>EMAIL: <a href="mailto:fsc_generale@outlook.it">fsc_generale@outlook.it</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>SEGUICI</h3>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/fsc_racingteam/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 FSC Racing Team. Tutti i diritti riservati.</p>
+      </div>
+    </footer>
+  </footer>
+
+  <script src="js/script.js"></script>
+
+  <!-- JS per SWIPE pila di polaroid (identico al tuo) -->
+  <script>
+    (function () {
+      const stack = document.getElementById('polaroidStack');
+      if (!stack) return;
+
+      const topCard = () => stack.lastElementChild;
+
+      function goNext() {
+        const card = topCard();
+        if (!card) return;
+        card.classList.add('go-next');
+        const onEnd = () => {
+          card.removeEventListener('transitionend', onEnd);
+          stack.insertBefore(card, stack.firstElementChild);
+          card.classList.remove('go-next');
+        };
+        card.addEventListener('transitionend', onEnd);
+      }
+
+      function goPrev() {
+        const first = stack.firstElementChild;
+        if (!first) return;
+        first.classList.add('from-prev');
+        stack.appendChild(first);
+        requestAnimationFrame(() => { first.classList.add('go-in'); });
+        const onEnd = () => {
+          first.removeEventListener('transitionend', onEnd);
+          first.classList.remove('from-prev', 'go-in');
+        };
+        first.addEventListener('transitionend', onEnd);
+      }
+
+      let startX = 0, startY = 0, dragging = false;
+      const THRESH = 28;
+
+      const onDown = (e) => {
+        const t = e.touches ? e.touches[0] : e;
+        startX = t.clientX; startY = t.clientY; dragging = true;
+      };
+      const onMove = (e) => {
+        if (!dragging) return;
+        const t = e.touches ? e.touches[0] : e;
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        if (Math.abs(dx) < THRESH || Math.abs(dx) < Math.abs(dy)) return;
+        dragging = false;
+        dx < 0 ? goNext() : goPrev();
+      };
+      const onUp = () => { dragging = false; };
+
+      stack.addEventListener('touchstart', onDown, { passive: true });
+      stack.addEventListener('touchmove', onMove, { passive: true });
+      stack.addEventListener('touchend', onUp, { passive: true });
+      stack.addEventListener('pointerdown', onDown);
+      stack.addEventListener('pointermove', onMove);
+      stack.addEventListener('pointerup', onUp);
+
+      stack.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { goPrev(); }
+        if (e.key === 'ArrowRight') { goNext(); }
+      });
+    })();
+  </script>
+
+  <!-- ✅ PORTING: routing per pagina (data-dept) + sottosezioni (data-unit) + special cards multiple -->
+  <script>
+    (function () {
+      async function fetchJson(path) {
+        const urls = [path, path.replace(/^\//, "")];
+        let lastErr = null;
+
+        for (const u of urls) {
+          try {
+            const res = await fetch(u + '?v=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) throw new Error(`Fetch failed ${res.status}: ${u}`);
+            return await res.json();
+          } catch (e) { lastErr = e; }
+        }
+        throw lastErr;
+      }
+
+      function esc(s) {
+        return String(s ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function isVisible(x) { return x?.visible !== false; }
+      function num(v, d = 0) { const n = Number(v); return Number.isFinite(n) ? n : d; }
+
+      function sortMembers(a, b) {
+        const oa = num(a.order, 0), ob = num(b.order, 0);
+        if (oa !== ob) return oa - ob;
+        return String(a.name ?? "").localeCompare(String(b.name ?? ""), "it");
+      }
+
+      function memberRowCard(m) {
+        const photo = (m.photo || "").trim();
+        const name = esc(m.name);
+        const role = esc(m.role);
+        const li = (m.linkedin || "").trim();
+
+        const specialClass = m.special ? " member--special" : "";
+
+        return `
+          <a class="card${specialClass}" href="${esc(li || '#')}"
+             ${li ? `target="_blank" rel="noopener"` : ``}
+             aria-label="Profilo LinkedIn — ${name}">
+            <div class="photo">${photo ? `<img src="${esc(photo)}" alt="${name}">` : ``}</div>
+            <div class="meta">
+              <div class="role">${role}</div>
+              <div class="name">${name}</div>
+            </div>
+            <span class="arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z"/></svg>
+            </span>
+          </a>
+        `;
+      }
+
+      function fillBigCard(cardEl, person) {
+        const li = (person.linkedin || "").trim();
+        cardEl.setAttribute("href", li || "#");
+
+        const media = cardEl.querySelector(".media");
+        if (media) {
+          let img = media.querySelector("img");
+          if (!img) {
+            img = document.createElement("img");
+            img.onerror = function () { this.style.opacity = .2; };
+            media.appendChild(img);
+          }
+          img.src = (person.photo || "").trim();
+          img.alt = `${person.role || "Capo Reparto"} — ${person.name || ""}`;
+        }
+
+        const roleEl = cardEl.querySelector(".content .role");
+        const nameEl = cardEl.querySelector(".content .name");
+        const descEl = cardEl.querySelector(".content p.role");
+
+        if (roleEl) roleEl.textContent = person.role || "Capo Reparto";
+        if (nameEl) nameEl.textContent = person.name || "";
+        if (descEl) descEl.textContent = person.bio || "";
+      }
+
+      (async () => {
+        try {
+          const data = await fetchJson('/dev/data/members.json');
+          const all = Array.isArray(data.members) ? data.members : [];
+
+          const dept = (document.body.getAttribute('data-dept') || '').trim().toLowerCase();
+
+          const people = all
+            .filter(isVisible)
+            .filter(m => String(m.dept || '').trim().toLowerCase() === dept)
+            .sort(sortMembers);
+
+          const grid = document.querySelector('section.grid');
+          const template = document.getElementById('coo-card'); // template per special
+          const unitLists = document.querySelectorAll('[data-unit]');
+
+          // se non c'è nulla -> sparisce tutto
+          if (!people.length) {
+            if (grid) grid.style.display = "none";
+            return;
+          } else {
+            if (grid) grid.style.display = "";
+          }
+
+          // SPECIALS = card grandi (tutte)
+          const specials = people.filter(m => m.special === true);
+          // NORMALS = tutto il resto (nelle liste)
+          const normals = people.filter(m => m.special !== true);
+
+          // rimuovi cloni special vecchi
+          document.querySelectorAll('[data-generated="special"]').forEach(n => n.remove());
+
+          // render special cards
+          if (template) {
+            if (!specials.length) {
+              template.style.display = "none";
+            } else {
+              template.style.display = "";
+              fillBigCard(template, specials[0]);
+
+              for (let i = 1; i < specials.length; i++) {
+                const clone = template.cloneNode(true);
+                clone.removeAttribute("id");
+                clone.setAttribute("data-generated", "special");
+                fillBigCard(clone, specials[i]);
+                template.insertAdjacentElement("afterend", clone);
+              }
+            }
+          }
+
+          // render unit lists: se vuota -> nascondi (no placeholder)
+          if (unitLists.length) {
+            unitLists.forEach(el => {
+              const unit = (el.getAttribute('data-unit') || '').trim().toLowerCase();
+              const group = normals.filter(p => String(p.unit || '').trim().toLowerCase() === unit);
+
+              if (!group.length) {
+                el.innerHTML = "";
+                el.style.display = "none";
+              } else {
+                el.style.display = "";
+                el.innerHTML = group.map(memberRowCard).join('');
+              }
+            });
+          }
+
+        } catch (e) {
+          console.error('TEAM:', e);
+        }
+      })();
+    })();
+  </script>
+
+  <!-- ✅ Fit per TUTTE le card grandi (template + cloni) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const applyFit = (box, img) => {
+        const w = img.naturalWidth, h = img.naturalHeight;
+        if (!w || !h) return;
+        const ratio = w / h;
+        box.style.aspectRatio = String(ratio);
+        if (ratio >= 1.1) { img.style.objectFit = 'contain'; img.style.objectPosition = '50% 50%'; }
+        else { img.style.objectFit = 'cover'; img.style.objectPosition = '50% 18%'; }
+      };
+
+      const obs = new MutationObserver(() => {
+        document.querySelectorAll('.card--coo .media').forEach(box => {
+          const img = box.querySelector('img');
+          if (!img) return;
+          if (img.complete) applyFit(box, img);
+          else img.addEventListener('load', () => applyFit(box, img), { once: true });
+        });
+      });
+
+      obs.observe(document.body, { childList: true, subtree: true });
+    });
+  </script>
+
+</body>
+</html>

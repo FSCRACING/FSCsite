@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "title": "Welcome to Decap",
+      "date": "2026-02-26",
+      "body": "Prima news gestibile da Area Riservata.",
+      "image": "",
+      "url": "",
+      "visible": true,
+      "order": 1
+    }
+  ]
+}

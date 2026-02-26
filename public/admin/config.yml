@@ -1,0 +1,108 @@
+logo:
+  src: https://www.fscracing.it/images/logoblack.png
+  show_in_header: true
+
+backend:
+  name: github
+  repo: FSCRACING/FSCsite
+  branch: main
+  base_url: https://fscracing-decap-proxy.fsc-generale.workers.dev
+  auth_endpoint: /auth
+
+media_folder: "public/dev/assets/uploads"
+public_folder: "/dev/assets/uploads"
+
+collections:
+  - name: "team"
+    label: "Team (DEV)"
+    files:
+      - label: "Persone"
+        name: "members"
+        file: "public/dev/data/members.json"
+        format: "json"
+        fields:
+          - label: "Membri"
+            name: "members"
+            widget: "list"
+            summary: "{{fields.dept}} / {{fields.unit}} — {{fields.name}}"
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Ruolo", name: "role", widget: "string" }
+
+              - label: "Reparto (pagina)"
+                name: "dept"
+                widget: "select"
+                options:
+                  - { label: "Management", value: "management" }
+                  - { label: "Elettrica", value: "elettrica" }
+                  - { label: "Meccanica", value: "meccanica" }
+
+              - label: "Sottoreparto"
+                name: "unit"
+                widget: "select"
+                options:
+                  - { label: "Management", value: "management" }
+                  - { label: "Professori", value: "professori" }
+                  - { label: "Low Voltage", value: "low_voltage" }
+                  - { label: "High Voltage", value: "high_voltage" }
+                  - { label: "Vehicle Dynamics", value: "vehicle_dynamics" }
+                  - { label: "Aerodinamica", value: "aerodynamics" }
+                  - { label: "Mechanical Design", value: "mechanical_design" }
+
+              - { label: "Bio (opzionale)", name: "bio", widget: "text", required: false }
+              - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+              - { label: "Capo reparto (special)", name: "special", widget: "boolean", default: false, required: false }
+              - { label: "Foto", name: "photo", widget: "image", required: false }
+
+              - { label: "Visibile", name: "visible", widget: "boolean", default: true, required: false }
+              - { label: "Ordine", name: "order", widget: "number", default: 0, required: false }
+
+  - name: "news"
+    label: "News (DEV)"
+    files:
+      - label: "Lista News"
+        name: "news_list"
+        file: "public/dev/data/news.json"
+        format: "json"
+        fields:
+          - label: "News"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - { label: "Titolo", name: "title", widget: "string" }
+              - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+              - { label: "Testo", name: "body", widget: "text" }
+              - { label: "Immagine (opz.)", name: "image", widget: "image", required: false }
+              - { label: "Link (opz.)", name: "url", widget: "string", required: false }
+              - { label: "Visibile", name: "visible", widget: "boolean", default: true, required: false }
+              - { label: "Ordine", name: "order", widget: "number", default: 0, required: false }
+
+  - name: "site"
+    label: "Contenuti Sito (DEV)"
+    files:
+      - label: "Blocchi Generali"
+        name: "site_blocks"
+        file: "public/dev/data/site.json"
+        format: "json"
+        fields:
+          - { label: "Titolo Hero", name: "hero_title", widget: "string" }
+          - { label: "Sottotitolo Hero", name: "hero_subtitle", widget: "text" }
+          - { label: "Immagine Hero", name: "hero_image", widget: "image", required: false }
+
+          - label: "Sponsor"
+            name: "sponsors"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Sito", name: "url", widget: "string", required: false }
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+
+          - label: "Contatti"
+            name: "contacts"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }

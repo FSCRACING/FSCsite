@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team FSC - Mechanic</title>
+
+  <link rel="stylesheet" href="css/management.css">
+  <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="FSC UNICT" />
+  <link rel="manifest" href="images/site.webmanifest" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- STILI "feat" (uguali a electric) -->
+  <style>
+    .intro-feat {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.9fr) 1.6fr;
+      gap: clamp(12px, 2.5vw, 24px);
+      padding: clamp(14px, 2.6vw, 24px);
+      background: var(--panel);
+    }
+
+    .intro-feat .media-feat {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(255, 255, 255, .08);
+      background: #061a33;
+    }
+
+    .intro-feat .media-feat img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .intro-feat .copy-feat h2 {
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.15;
+      margin-bottom: .35rem
+    }
+
+    .intro-feat .copy-feat p {
+      color: var(--muted);
+      font-size: clamp(14px, 1.5vw, 18px)
+    }
+
+    @media (max-width:900px) {
+      .intro-feat { grid-template-columns: 1fr }
+    }
+
+    .grid-feat {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(12px, 2vw, 18px);
+      padding: clamp(14px, 2.6vw, 24px);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .02), transparent 30%);
+    }
+
+    @media (max-width:980px) {
+      .grid-feat { grid-template-columns: repeat(2, 1fr) }
+    }
+
+    @media (max-width:580px) {
+      .grid-feat { grid-template-columns: 1fr }
+    }
+
+    .card1-feat {
+      background: var(--panel);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      display: grid;
+      grid-template-rows: 160px auto;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card1-feat:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow)
+    }
+
+    .card1-feat .img-feat {
+      width: 100%;
+      height: 100%;
+      background: #061a33;
+      overflow: hidden
+    }
+
+    .card1-feat .img-feat img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .card1-feat .meta-feat {
+      padding: 12px 14px 14px;
+      display: grid;
+      gap: .25rem
+    }
+
+    .card1-feat .role-feat {
+      color: var(--muted);
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .12em
+    }
+
+    .card1-feat .name-feat {
+      font-size: 1.05rem;
+      font-weight: 800
+    }
+
+    .arrow-feat {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: grid;
+      place-items: center;
+      background: rgba(0, 0, 0, .15);
+      transition: transform .22s, background .22s, border-color .22s;
+    }
+
+    .arrow-feat svg {
+      width: 18px;
+      height: 18px;
+      transform: rotate(45deg)
+    }
+
+    .arrow-feat path { fill: var(--accent) }
+
+    .card1-feat:hover .arrow-feat {
+      transform: rotate(0deg);
+      background: var(--accent)
+    }
+
+    .card1-feat:hover .arrow-feat path { fill: #fff }
+
+    .detail-overlay-feat {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      background: rgba(0, 0, 0, .65);
+      backdrop-filter: blur(6px) saturate(140%);
+    }
+
+    .detail-overlay-feat[aria-hidden="false"] { display: block; }
+
+    .detail-modal-feat {
+      position: absolute;
+      inset: clamp(12px, 4vw, 40px);
+      background: var(--panel);
+      border: 2px solid var(--accent);
+      border-radius: 18px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(12px, 2vw, 18px);
+      padding: clamp(14px, 2.5vw, 22px);
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width:900px) {
+      .detail-modal-feat { grid-template-columns: 1fr; overflow: auto }
+    }
+
+    .detail-media-feat {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: #061a33;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, .08)
+    }
+
+    .detail-media-feat img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .detail-copy-feat h3 {
+      font-size: clamp(20px, 2.8vw, 28px);
+      line-height: 1.2;
+      margin-bottom: .35rem
+    }
+
+    .detail-copy-feat p {
+      color: var(--muted);
+      font-size: clamp(14px, 1.5vw, 18px)
+    }
+
+    .detail-topbar-feat {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(255, 255, 255, .08);
+    }
+
+    .detail-title-feat {
+      font-weight: 800;
+      letter-spacing: .04em;
+      font-size: clamp(18px, 2.4vw, 24px)
+    }
+
+    .detail-close-feat {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--accent);
+      background: rgba(0, 0, 0, .15);
+      cursor: pointer;
+      transition: transform .2s, background .2s;
+    }
+
+    .detail-close-feat:hover {
+      transform: rotate(90deg);
+      background: var(--accent)
+    }
+
+    .detail-close-feat svg { width: 22px; height: 22px }
+    .detail-close-feat path { fill: var(--fg) }
+  </style>
+</head>
+
+<body data-dept="meccanica">
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Logo FSC UniCT" class="navbar-logo">
+      </a>
+      <nav class="navbar-menu">
+        <ul>
+          <li><a href="index.html#hero">Chi Siamo?</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="chi-siamo">
+    <div class="container">
+      <section class="intro" aria-label="Presentazione del team">
+        <div class="logo-box">
+          <img src="images/logo.png" alt="Logo FSC Racing Team">
+        </div>
+        <div class="about">
+          <h2>Reparto Meccanica</h2>
+          <p>Rappresenta il cuore pulsante dell'innovazione tecnica e progettuale del Team FSC.
+            Il reparto si dedica alla progettazione, sviluppo e realizzazione di componenti
+            meccanici avanzati per la vettura da competizione.</p>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <div class="divisore"></div>
+
+  <!-- ===== Vehicle Dynamics ===== -->
+  <main class="page">
+    <div class="header"><span class="pip"></span> Vehicle Dynamics & Suspensions</div>
+
+    <section aria-label="Vehicle Dynamics approfondimenti">
+      <div class="intro-feat">
+        <div class="media-feat"><img src="images/collage-elect/setup.avif" alt="VD Hero"
+            onerror="this.style.opacity=.2"></div>
+        <div class="copy-feat">
+          <h2>Shock Absorbers, Tyres and Tuning.</h2>
+          <p>Gestione sospensioni, studio comportamentale di masse sospese e non sospese.</p>
+        </div>
+      </div>
+
+      <div class="grid-feat">
+        <article class="card1-feat" tabindex="0" data-title="Suspensions — Cinematica & geometrie"
+          data-desc="Progettazione di bracci, push/pull-rod e pivot; definizione di camber, caster, toe; analisi di roll center, anti-dive/anti-squat e bump steer lungo l’escursione."
+          data-img="images/collage-elect/Immagine2.jpg">
+          <div class="img-feat"><img src="images/collage-elect/Immagine2.jpg"
+              alt="Suspensions — Cinematica & geometrie"></div>
+          <div class="meta-feat">
+            <div class="role-feat">Suspensions</div>
+            <div class="name-feat">Cinematica & geometrie</div>
+          </div>
+          <span class="arrow-feat" aria-hidden="true"><svg viewBox="0 0 24 24">
+              <path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z" />
+            </svg></span>
+        </article>
+
+        <article class="card1-feat" tabindex="0" data-title="Vehicle Dynamics — Pneumatici & dinamica"
+          data-desc="Modelli pneumatico (es. Pacejka), mappatura grip e temperature, trasferimenti di carico e gestione di sotto/sovrasterzo; validazione tramite telemetria."
+          data-img="images/collage-elect/collage-3.jpg">
+          <div class="img-feat"><img src="images/collage-elect/collage-3.jpg"
+              alt="Vehicle Dynamics — Pneumatici & dinamica"></div>
+          <div class="meta-feat">
+            <div class="role-feat">Vehicle Dynamics</div>
+            <div class="name-feat">Pneumatici & dinamica</div>
+          </div>
+          <span class="arrow-feat" aria-hidden="true"><svg viewBox="0 0 24 24">
+              <path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z" />
+            </svg></span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ✅ TEAM Vehicle Dynamics -->
+    <section class="grid" aria-label="Meccanica — Vehicle Dynamics" data-team data-unit="vehicle_dynamics">
+      <a class="card card--coo" data-template="lead" href="#" target="_blank" rel="noopener"
+        aria-label="Profilo Responsabile Vehicle Dynamics">
+        <div class="media"></div>
+        <div class="content">
+          <div class="role">Responsabile di Reparto</div>
+          <div class="name">—</div>
+          <p class="role" style="letter-spacing:.02em; text-transform:none;">—</p>
+        </div>
+        <span class="arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z" />
+          </svg>
+        </span>
+      </a>
+
+      <div class="list" data-template="list"></div>
+    </section>
+  </main>
+
+  <div class="divisore"></div>
+
+  <!-- ===== Mechanical Design ===== -->
+  <main class="page">
+    <div class="header"><span class="pip"></span> Mechanic Designing</div>
+
+    <section aria-label="Mechanical Design approfondimenti">
+      <div class="intro-feat">
+        <div class="media-feat"><img src="images/collage-elect/lv-hero.jpg" alt="Design Hero"
+            onerror="this.style.opacity=.2"></div>
+        <div class="copy-feat">
+          <h2>CAD, Simulations & Designing</h2>
+          <p>Progettazione CAD, analisi delle sollecitazioni, modellazione e studio delle componenti meccaniche.</p>
+        </div>
+      </div>
+
+      <div class="grid-feat">
+        <article class="card1-feat" tabindex="0" data-title="Mechanical Design — CAD & FEA"
+          data-desc="Progettazione componenti (uprights, mozzi, staffe); scelta materiali; analisi FEM statica/fatica; ottimizzazione topologica e rispetto dei fattori di sicurezza."
+          data-img="images/collage-elect/Immagine6.jpg">
+          <div class="img-feat"><img src="images/collage-elect/Immagine4.jpg" alt="Mechanical Design — CAD & FEA"></div>
+          <div class="meta-feat">
+            <div class="role-feat">Mechanical Design</div>
+            <div class="name-feat">CAD & FEA strutturale</div>
+          </div>
+          <span class="arrow-feat" aria-hidden="true"><svg viewBox="0 0 24 24">
+              <path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z" />
+            </svg></span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ✅ TEAM Mechanical Design -->
+    <section class="grid" aria-label="Meccanica — Mechanical Design" data-team data-unit="mechanical_design">
+      <a class="card card--coo" data-template="lead" href="#" target="_blank" rel="noopener"
+        aria-label="Profilo Responsabile Mechanical Design">
+        <div class="media"></div>
+        <div class="content">
+          <div class="role">Responsabile di Reparto</div>
+          <div class="name">—</div>
+          <p class="role" style="letter-spacing:.02em; text-transform:none;">—</p>
+        </div>
+        <span class="arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z" />
+          </svg>
+        </span>
+      </a>
+
+      <div class="list" data-template="list"></div>
+    </section>
+  </main>
+
+  <div class="divisore"></div>
+
+  <!-- ===== Aerodynamics ===== -->
+  <main class="page">
+    <div class="header"><span class="pip"></span> Aerodynamics</div>
+
+    <section aria-label="Aerodynamics approfondimenti">
+      <div class="intro-feat">
+        <div class="media-feat"><img src="images/collage-elect/aero.jpeg" alt="Aero Hero"
+            onerror="this.style.opacity=.2"></div>
+        <div class="copy-feat">
+          <h2>CFD, CAD & Aerodynamic Analysis</h2>
+          <p>Simulazione CFD, Simulazioni CAD e ottimizzazione delle superfici aerodinamiche.</p>
+        </div>
+      </div>
+
+      <div class="grid-feat">
+        <article class="card1-feat" tabindex="0" data-title="Aerodynamics — Aero package & CFD"
+          data-desc="Studio di ali, endplate, fondo e diffusore; simulazioni CFD (steady/transient), correlazione con assetto (ride-height, rake) e post-processing dei risultati."
+          data-img="images/collage-elect/Immagine5.png">
+          <div class="img-feat"><img src="images/collage-elect/Immagine5.png" alt="Aerodynamics — Aero package & CFD">
+          </div>
+          <div class="meta-feat">
+            <div class="role-feat">Aerodynamics</div>
+            <div class="name-feat">Aero package & CFD</div>
+          </div>
+          <span class="arrow-feat" aria-hidden="true"><svg viewBox="0 0 24 24">
+              <path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z" />
+            </svg></span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ✅ TEAM Aerodynamics -->
+    <section class="grid" aria-label="Meccanica — Aerodynamics" data-team data-unit="aerodynamics">
+      <a class="card card--coo" data-template="lead" href="#" target="_blank" rel="noopener"
+        aria-label="Profilo Responsabile Aerodynamics">
+        <div class="media"></div>
+        <div class="content">
+          <div class="role">Responsabile di Reparto</div>
+          <div class="name">—</div>
+          <p class="role" style="letter-spacing:.02em; text-transform:none;">—</p>
+        </div>
+        <span class="arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z" />
+          </svg>
+        </span>
+      </a>
+
+      <div class="list" data-template="list"></div>
+    </section>
+  </main>
+
+  <div class="divisore"></div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Logo FSC UniCT">
+      </div>
+      <div class="footer-nav">
+        <h3>Link Utili</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contatti</h3>
+        <ul>
+          <li>Email: <a href="mailto:fsc_generale@outlook.it">fsc_generale@outlook.it</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Seguici</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/fsc_racingteam/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 FSC Racing. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+
+  <!-- Overlay (feat) -->
+  <div class="detail-overlay-feat" id="detailOverlayFeat" aria-hidden="true" aria-modal="true" role="dialog">
+    <div class="detail-modal-feat" role="document">
+      <div class="detail-topbar-feat">
+        <div class="detail-title-feat" id="detailTitleFeat">Titolo parte</div>
+        <button class="detail-close-feat" id="detailCloseFeat" aria-label="Chiudi dettaglio">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M18.3 5.71 12 12.01l-6.29-6.3-1.42 1.42L10.59 13.4l-6.3 6.3 1.42 1.41 6.29-6.29 6.29 6.29 1.41-1.41-6.29-6.3 6.29-6.29z" />
+          </svg>
+        </button>
+      </div>
+      <div class="detail-media-feat"><img id="detailImgFeat" src="" alt=""></div>
+      <div class="detail-copy-feat">
+        <h3 id="detailH3Feat">—</h3>
+        <p id="detailDescFeat">—</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const overlay = document.getElementById('detailOverlayFeat');
+      const titleEl = document.getElementById('detailTitleFeat');
+      const h3El = document.getElementById('detailH3Feat');
+      const descEl = document.getElementById('detailDescFeat');
+      const imgEl = document.getElementById('detailImgFeat');
+      const closeBtn = document.getElementById('detailCloseFeat');
+
+      function openDetail({ title, desc, img }) {
+        titleEl.textContent = title || '';
+        h3El.textContent = title || '';
+        descEl.textContent = desc || '';
+        imgEl.src = img || '';
+        imgEl.alt = title || 'Dettaglio';
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        const onKey = (e) => { if (e.key === 'Escape') closeDetail(); };
+        overlay._escHandler = onKey;
+        document.addEventListener('keydown', onKey);
+
+        overlay._outsideHandler = (e) => { if (e.target === overlay) closeDetail(); };
+        overlay.addEventListener('click', overlay._outsideHandler);
+      }
+
+      function closeDetail() {
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', overlay._escHandler || (() => { }));
+        overlay.removeEventListener('click', overlay._outsideHandler || (() => { }));
+      }
+
+      closeBtn.addEventListener('click', closeDetail);
+
+      document.querySelectorAll('.card1-feat').forEach(card => {
+        const data = {
+          title: card.getAttribute('data-title'),
+          desc: card.getAttribute('data-desc'),
+          img: card.getAttribute('data-img'),
+        };
+        const handler = (e) => { e?.preventDefault?.(); openDetail(data); };
+        card.addEventListener('click', handler);
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(e); }
+        });
+      });
+    })();
+  </script>
+
+  <!-- ✅ TEAM RENDERER (identico a electric) -->
+  <script>
+    (function () {
+      async function fetchJson(path) {
+        const urls = [path, path.replace(/^\//, "")];
+        let lastErr = null;
+        for (const u of urls) {
+          try {
+            const res = await fetch(u + '?v=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) throw new Error(`Fetch failed ${res.status}: ${u}`);
+            return await res.json();
+          } catch (e) { lastErr = e; }
+        }
+        throw lastErr;
+      }
+
+      function esc(s) {
+        return String(s ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function isVisible(x) { return x?.visible !== false; }
+      function num(v, d = 0) { const n = Number(v); return Number.isFinite(n) ? n : d; }
+      function sortMembers(a, b) {
+        const oa = num(a.order, 0), ob = num(b.order, 0);
+        if (oa !== ob) return oa - ob;
+        return String(a.name ?? "").localeCompare(String(b.name ?? ""), "it");
+      }
+
+      function memberRowCard(m) {
+        const photo = (m.photo || "").trim();
+        const name = esc(m.name);
+        const role = esc(m.role);
+        const li = (m.linkedin || "").trim();
+        const specialClass = m.special ? " member--special" : "";
+        return `
+          <a class="card${specialClass}" href="${esc(li || '#')}"
+             ${li ? `target="_blank" rel="noopener"` : ``}
+             aria-label="Profilo — ${name}">
+            <div class="photo">${photo ? `<img src="${esc(photo)}" alt="${name}">` : ``}</div>
+            <div class="meta">
+              <div class="role">${role}</div>
+              <div class="name">${name}</div>
+            </div>
+            <span class="arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12h9l-4-4 1.4-1.4L18.8 12l-7.4 5.4L10 16l4-4H5z"/></svg>
+            </span>
+          </a>
+        `;
+      }
+
+      function fillBigCard(cardEl, person) {
+        const li = (person.linkedin || "").trim();
+        cardEl.setAttribute("href", li || "#");
+
+        const media = cardEl.querySelector(".media");
+        if (media) {
+          let img = media.querySelector("img");
+          if (!img) {
+            img = document.createElement("img");
+            img.onerror = function () { this.style.opacity = .2; };
+            media.appendChild(img);
+          }
+          img.src = (person.photo || "").trim();
+          img.alt = `${person.role || "Responsabile"} — ${person.name || ""}`;
+        }
+
+        const roleEl = cardEl.querySelector(".content .role");
+        const nameEl = cardEl.querySelector(".content .name");
+        const descEl = cardEl.querySelector(".content p.role");
+        if (roleEl) roleEl.textContent = person.role || "Responsabile di Reparto";
+        if (nameEl) nameEl.textContent = person.name || "";
+        if (descEl) descEl.textContent = person.bio || "";
+      }
+
+      function applyFitAllBigCards() {
+        const applyFit = (box, img) => {
+          const w = img.naturalWidth, h = img.naturalHeight;
+          if (!w || !h) return;
+          const ratio = w / h;
+          box.style.aspectRatio = String(ratio);
+          if (ratio >= 1.1) { img.style.objectFit = 'contain'; img.style.objectPosition = '50% 50%'; }
+          else { img.style.objectFit = 'cover'; img.style.objectPosition = '50% 18%'; }
+        };
+        document.querySelectorAll('.card--coo .media').forEach(box => {
+          const img = box.querySelector('img');
+          if (!img) return;
+          if (img.complete) applyFit(box, img);
+          else img.addEventListener('load', () => applyFit(box, img), { once: true });
+        });
+      }
+
+      (async () => {
+        try {
+          const data = await fetchJson('/dev/data/members.json');
+          const all = Array.isArray(data.members) ? data.members : [];
+
+          const dept = (document.body.getAttribute('data-dept') || '').trim().toLowerCase();
+
+          document.querySelectorAll('[data-team][data-unit]').forEach(block => {
+            const unit = (block.getAttribute('data-unit') || '').trim().toLowerCase();
+
+            const people = all
+              .filter(isVisible)
+              .filter(m => String(m.dept || '').trim().toLowerCase() === dept)
+              .filter(m => String(m.unit || '').trim().toLowerCase() === unit)
+              .sort(sortMembers);
+
+            const leadTemplate = block.querySelector('[data-template="lead"]');
+            const listEl = block.querySelector('[data-template="list"]');
+
+            block.querySelectorAll('[data-generated="lead"]').forEach(n => n.remove());
+
+            const specials = people.filter(p => p.special === true);
+            const normals = people.filter(p => p.special !== true);
+
+            if (leadTemplate) {
+              if (!specials.length) {
+                leadTemplate.style.display = "none";
+              } else {
+                leadTemplate.style.display = "";
+                fillBigCard(leadTemplate, specials[0]);
+
+                for (let i = 1; i < specials.length; i++) {
+                  const clone = leadTemplate.cloneNode(true);
+                  clone.setAttribute("data-generated", "lead");
+                  fillBigCard(clone, specials[i]);
+                  leadTemplate.insertAdjacentElement("afterend", clone);
+                }
+              }
+            }
+
+            if (listEl) {
+              if (!normals.length) {
+                listEl.innerHTML = "";
+                listEl.style.display = "none";
+              } else {
+                listEl.style.display = "";
+                listEl.innerHTML = normals.map(memberRowCard).join('');
+              }
+            }
+
+            if (!people.length) block.style.display = "none";
+            else block.style.display = "";
+          });
+
+          applyFitAllBigCards();
+          window.addEventListener('resize', applyFitAllBigCards);
+
+        } catch (e) {
+          console.error('TEAM:', e);
+        }
+      })();
+    })();
+  </script>
+</body>
+
+</html>

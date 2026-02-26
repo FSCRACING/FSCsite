@@ -1,0 +1,179 @@
+// designed by alongio
+import React, { useEffect, useMemo, useRef } from "react";
+
+export default function FscFooter() {
+  const panelRef = useRef<HTMLElement | null>(null);
+  const year = useMemo(() => new Date().getFullYear(), []);
+
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel) return;
+
+    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (prefersReduced) return;
+
+    const onMove = (e: PointerEvent) => {
+      const r = panel.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      panel.style.setProperty("--mx", `${x.toFixed(2)}%`);
+      panel.style.setProperty("--my", `${y.toFixed(2)}%`);
+    };
+
+    const onLeave = () => {
+      panel.style.setProperty("--mx", "50%");
+      panel.style.setProperty("--my", "35%");
+    };
+
+    panel.addEventListener("pointermove", onMove);
+    panel.addEventListener("pointerleave", onLeave);
+    return () => {
+      panel.removeEventListener("pointermove", onMove);
+      panel.removeEventListener("pointerleave", onLeave);
+    };
+  }, []);
+
+  return (
+    <footer className="fscFooter">
+      <div className="footerWrap">
+        <section className="panel" id="fPanel" ref={panelRef} aria-label="Footer">
+          <div className="top">
+            <div className="logo" aria-hidden="true">
+              <svg
+                version="1.1"
+                id="Livello_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 294.3 374.5"
+                xmlSpace="preserve"
+              >
+                <style>{`
+                  .st0 { fill: #737373; }
+                  .st1 { fill: #FFFFFF; stroke: #FFFFFF; stroke-miterlimit: 10; }
+                  .st2 { fill: #FFFFFF; }
+                  .st3 { fill: none; }
+                `}</style>
+                <g>
+                  <path className="st0" d="M97.3,111.9c0,53.4-44,97.3-97.3,97.3V14.6C53.4,14.6,97.3,58.5,97.3,111.9z" />
+                  <path
+                    className="st0"
+                    d="M0,374.5V223.4c11.9,0.2,23.8-1.5,35.2-5.2c29.5-9.7,46-29.7,51.4-36.4c2.3-2.9,3.9-5,4.5-5.9
+		c12.5-18,19.5-39.3,20.1-61.2c0.1-19.6-4.8-38.9-14.3-56.1c-6.3-11.6-14.7-22.1-24.6-30.8c-8.3-7.1-17.6-13-27.6-17.4
+		c-8.1-3.5-16.5-6.1-25.1-7.7C10.8,1,0,0.2,0,0c0.3,0,0.6,0,0.9,0C9-0.1,70.8,0.1,128.8,39c78.4,52.6,94.5,140.2,96,149.2
+		c8.2,48.9,4.6,131.1-39.9,154c-14.8,7.6-41.1,12.2-58.9-1.4c-16.6-12.8-17.5-35-17.6-39c0-1.7-0.1-25.4,16.6-39.5
+		c1.6-1.4,12.8-10.8,19.5-7.1c3.7,2,4.5,7.3,4.8,9.1c1.8,12.4-9.3,17.3-8.6,27.5c0.7,9.8,12,20.2,21.4,19s14-13.4,17.1-21.4
+		c6.8-17.5,4.7-33.2,2.9-47.5c-2.5-15.8-6.6-31.2-12.4-46.1c-0.1-0.2-0.6-1.6-1.3-3.4c-1.1-2.9-2.9-7.7-4.9-13.7
+		c-1.8-5.4-2.2-6.9-3.3-10.5c-0.7-2.3-1.2-3.8-1.5-4.7c-3.8-11.8-5.3-20.5-8-20.6c-0.5,0-1.1,0.2-2,1.5c-2.2,7.5-4.4,14.9-6.6,22.4
+		c13.1,17.1,22.9,36.6,29,57.3c-29.6,0.3-51.2,0.3-65.6,0.2c-14.9-0.1-27.7-0.2-35.6,8.5c-5.8,6.4-6.1,14.4-6.6,22.8
+		c-0.3,4.2-3.1,49.8-8.6,71.2c-3.1,12.3-10.3,29.3-28.5,47.5"
+                  />
+                  <path
+                    className="st1"
+                    d="M143.6,163.7l5.9-21.9c12.3,8.1,25.8,14.3,39.9,18.5c12.2,3.7,24.8,5.8,37.5,6.2c28.7,0.7,51.8-8.3,65.6-15.2
+		c-8,10.2-18,18.6-29.5,24.7C210.1,203.9,149.1,167.2,143.6,163.7z"
+                  />
+                  <path
+                    className="st2"
+                    d="M146.5,73.5c1.3-0.9,8.2,6.1,13.9,13.7c3.9,5.2,9.2,12.2,7.8,13.8c-1.6,1.8-10.4-4.8-15.1-8.4
+		c-1.3-1-3.7-2.9-4.3-5.9c-0.1-0.9-0.1-1.7-0.1-2.6C148.1,77.3,145.7,74.1,146.5,73.5z"
+                  />
+                  <path
+                    className="st2"
+                    d="M20.5,111.8c0,11.3-9.2,20.4-20.5,20.5v-9.6c6,0,10.9-4.9,10.9-10.9c0-6-4.9-10.9-10.9-10.9v-9.6
+		C11.3,91.3,20.4,100.5,20.5,111.8z"
+                  />
+                  <polygon className="st2" points="0,120.9 0,102.6 5.3,102.6 10.6,111.8 5.3,120.9" />
+                  <path
+                    className="st2"
+                    d="M84.3,111.9c0,46.3-38.1,84.3-84.3,84.3v-9.7c40.9,0,74.6-33.7,74.6-74.6S40.9,37.3,0,37.3v-9.7
+		C46.2,27.6,84.3,65.6,84.3,111.9z"
+                  />
+
+                  <rect
+                    x="19.7"
+                    y="36.1"
+                    transform="matrix(0.4635 -0.8861 0.8861 0.4635 -21.0657 51.7582)"
+                    className="st0"
+                    width="25"
+                    height="14.4"
+                  />
+                  <rect
+                    x="27.8"
+                    y="166"
+                    transform="matrix(0.8861 -0.4635 0.4635 0.8861 -78.7289 36.5386)"
+                    className="st0"
+                    width="14.4"
+                    height="25"
+                  />
+
+                  <path
+                    className="st2"
+                    d="M15.3,58.2l-5.1,15.6c-1.2,3.7-4.1,6.1-7.2,6.1H0V51.1c4.7,0,9.4,1,13.8,2.9C15.2,54.9,15.9,56.6,15.3,58.2z"
+                  />
+                  <path
+                    className="st2"
+                    d="M50.6,80.8L50.6,80.8c-3.5-9-10.6-16.1-19.5-19.5l0,0c-1.6-0.5-3.3,0.3-4,1.9l-7.4,14.6
+		c-1.7,3.4-1.4,7.2,0.8,9.4l4.1,4.1c2.2,2.2,6,2.6,9.4,0.8l14.6-7.4C50.2,84.1,51.1,82.4,50.6,80.8z"
+                  />
+                  <path
+                    className="st2"
+                    d="M57.8,125.7L57.8,125.7c3.9-8.8,3.9-18.8,0-27.6l0,0c-0.8-1.4-2.6-2.1-4.1-1.5l-15.6,5.1
+		c-3.7,1.2-6.1,4.1-6.1,7.2v5.8c0,3.2,2.4,6,6.1,7.2l15.6,5.1C55.2,127.8,57,127.1,57.8,125.7z"
+                  />
+                  <path
+                    className="st2"
+                    d="M31.1,162.5L31.1,162.5c9-3.4,16.1-10.5,19.5-19.5l0,0c0.4-1.6-0.3-3.3-1.9-4l-14.6-7.3
+		c-3.5-1.7-7.2-1.4-9.4,0.8l-4.1,4.1c-2.2,2.2-2.6,5.9-0.8,9.4l7.4,14.6C27.8,162.2,29.5,162.9,31.1,162.5z"
+                  />
+                  <path
+                    className="st2"
+                    d="M15.5,166.8c0.1,1.2-0.6,2.4-1.7,2.9c-4.3,1.9-9,2.9-13.8,2.9V144h2.9c3.2,0,6,2.4,7.2,6.1l5.1,15.6
+		C15.4,166,15.5,166.4,15.5,166.8z"
+                  />
+                </g>
+              </svg>
+            </div>
+
+            <div className="col-platform"></div>
+
+            <nav className="col-sol" aria-label="Solutions"></nav>
+
+            <nav className="col-about" aria-label="About"></nav>
+          </div>
+
+          <div className="mid">
+            <div className="made">
+              <div className="mark" aria-hidden="true">
+                <span className="sq red"></span>
+                <span className="sq blue"></span>
+              </div>
+              <div>
+                FORGED IN CATANIA. FOR
+                <br />
+                CATANIA.
+              </div>
+            </div>
+
+            <div className="addr">
+              {"FSC RACING HQ\n64, VIA SANTA SOFIA\n95123 CATANIA CT\nITALY"}
+            </div>
+          </div>
+
+          <div className="brand" aria-hidden="true">
+            FSCRACING
+          </div>
+        </section>
+
+        <div className="legalOuter" aria-label="Legal">
+          <div>
+            ©<span id="year">{year}</span> FSC RACING.
+          </div>
+          <a href="#">PRIVACY POLICY</a>
+          <a href="#">TERMS OF USE</a>
+        </div>
+      </div>
+    </footer>
+  );
+}

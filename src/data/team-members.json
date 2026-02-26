@@ -1,0 +1,64 @@
+{
+  "members": [
+    {
+      "id": "hv-lead-1",
+      "department": "electric-hv",
+      "name": "Responsabile HV",
+      "role": "Head of High Voltage",
+      "imageUrl": "/images/collage-elect/battery.jpg",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "lead"
+    },
+    {
+      "id": "lv-lead-1",
+      "department": "electric-lv",
+      "name": "Responsabile LV",
+      "role": "Head of Low Voltage",
+      "imageUrl": "/images/collage-elect/ecu.jpg",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "lead"
+    },
+    {
+      "id": "vd-lead-1",
+      "department": "mech-vd",
+      "name": "Responsabile Vehicle Dynamics",
+      "role": "Head of Vehicle Dynamics",
+      "imageUrl": "/images/collage-elect/setup.avif",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "lead"
+    },
+    {
+      "id": "md-lead-1",
+      "department": "mech-design",
+      "name": "Responsabile Mechanical Design",
+      "role": "Head of Mechanical Design",
+      "imageUrl": "/images/collage-elect/Immagine6.jpg",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "lead"
+    },
+    {
+      "id": "aero-lead-1",
+      "department": "mech-aero",
+      "name": "Responsabile Aerodynamics",
+      "role": "Head of Aerodynamics",
+      "imageUrl": "/images/collage-elect/Immagine5.png",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "lead"
+    },
+    {
+      "id": "mgmt-lead-1",
+      "department": "management",
+      "name": "COO",
+      "role": "Management Lead",
+      "imageUrl": "/images/collage-mgmt/collage-1.jpeg",
+      "github": "",
+      "linkedinUrl": "",
+      "cardSize": "lead"
+    }
+  ]
+}

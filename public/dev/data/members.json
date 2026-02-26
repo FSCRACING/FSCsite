@@ -1,0 +1,76 @@
+{
+  "members": [
+    {
+      "name": "Responsabile HV",
+      "role": "Head of High Voltage",
+      "dept": "elettrica",
+      "unit": "high_voltage",
+      "bio": "",
+      "linkedin": "",
+      "special": true,
+      "photo": "/images/collage-elect/battery.jpg",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "name": "Responsabile LV",
+      "role": "Head of Low Voltage",
+      "dept": "elettrica",
+      "unit": "low_voltage",
+      "bio": "",
+      "linkedin": "",
+      "special": true,
+      "photo": "/images/collage-elect/ecu.jpg",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "name": "Responsabile Vehicle Dynamics",
+      "role": "Head of Vehicle Dynamics",
+      "dept": "meccanica",
+      "unit": "vehicle_dynamics",
+      "bio": "",
+      "linkedin": "",
+      "special": true,
+      "photo": "/images/collage-elect/setup.avif",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "name": "Responsabile Mechanical Design",
+      "role": "Head of Mechanical Design",
+      "dept": "meccanica",
+      "unit": "mechanical_design",
+      "bio": "",
+      "linkedin": "",
+      "special": true,
+      "photo": "/images/collage-elect/Immagine6.jpg",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "name": "Responsabile Aerodynamics",
+      "role": "Head of Aerodynamics",
+      "dept": "meccanica",
+      "unit": "aerodynamics",
+      "bio": "",
+      "linkedin": "",
+      "special": true,
+      "photo": "/images/collage-elect/Immagine5.png",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "name": "COO",
+      "role": "Management Lead",
+      "dept": "management",
+      "unit": "management",
+      "bio": "",
+      "linkedin": "",
+      "special": true,
+      "photo": "/images/collage-mgmt/collage-1.jpeg",
+      "visible": true,
+      "order": 1
+    }
+  ]
+}
