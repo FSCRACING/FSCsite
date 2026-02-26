@@ -1,0 +1,15 @@
+{
+  "members": [
+    {
+      "unit": "management",
+      "dept": "management",
+      "name": "Emanuele Di Bella",
+      "order": 0,
+      "visible": true,
+      "photo": "/FSCSite-2.0/dev/assets/uploads/coo.png",
+      "role": "Chief Operating Officer",
+      "special": true,
+      "linkedin": "https://www.linkedin.com/in/emanuele-di-bella-058581242/"
+    }
+  ]
+}
